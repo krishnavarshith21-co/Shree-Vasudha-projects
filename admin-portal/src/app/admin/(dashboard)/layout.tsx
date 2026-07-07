@@ -4,7 +4,7 @@ import Sidebar from "@/components/admin/Sidebar";
 import Header from "@/components/admin/Header";
 
 export const metadata = {
-  title: "Admin Portal — Shree Vasudha Projects",
+  title: "Sree Vasudha Projects | Luxury Real Estate",
 };
 
 export default async function AdminLayout({
