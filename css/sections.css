@@ -4209,12 +4209,12 @@ footer::before {
 }
 
 .footer-logo {
-    max-width: clamp(180px, 20vw, 280px);
+    max-width: clamp(240px, 30vw, 360px);
     width: 100%;
     height: auto;
     margin-bottom: clamp(24px, 4vw, 48px);
-    margin-left: clamp(-24px, -3vw, -48px);
-    transform: scale(clamp(1.2, 1.4, 1.6));
+    margin-left: clamp(-12px, -1.5vw, -24px);
+    transform: scale(clamp(1.4, 1.7, 1.9));
     transform-origin: left center;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)) contrast(1.1);
 }
