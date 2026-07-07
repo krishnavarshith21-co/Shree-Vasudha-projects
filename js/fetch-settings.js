@@ -37,7 +37,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Footer
         const footerAddress = document.getElementById('footer-address');
         if (footerAddress) {
-          footerAddress.innerHTML = `<p>${v.address.split(',').join('</p><p>')}</p>`;
+          const content = `<p>${v.address.split(',').join('</p><p>')}</p>`;
+          if (v.maps_link) {
+            footerAddress.innerHTML = `<a href="${v.maps_link}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">${content}</a>`;
+          } else {
+            const genericMapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.address)}`;
+            footerAddress.innerHTML = `<a href="${genericMapsLink}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">${content}</a>`;
+          }
         }
 
         // Contact Page
