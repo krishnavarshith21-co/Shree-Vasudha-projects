@@ -38,11 +38,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         const footerAddress = document.getElementById('footer-address');
         if (footerAddress) {
           const content = `<p>${v.address.split(',').join('</p><p>')}</p>`;
-          if (v.maps_link) {
-            footerAddress.innerHTML = `<a href="${v.maps_link}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">${content}</a>`;
+          const aTag = footerAddress.querySelector('a');
+          if (aTag) {
+            aTag.href = v.maps_link || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.address)}`;
+            aTag.innerHTML = content;
           } else {
             const genericMapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.address)}`;
-            footerAddress.innerHTML = `<a href="${genericMapsLink}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">${content}</a>`;
+            footerAddress.innerHTML = `<a href="${v.maps_link || genericMapsLink}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: block; transition: color 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='inherit'">${content}</a>`;
           }
         }
 
