@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shree Vasudha Projects — Luxury Real Estate Developer.">
+  <meta name="theme-color" content="#141618">
+
+  <title>Project Details — Shree Vasudha Projects</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="css/tokens.css?v=2.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/components.css?v=2.0">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/utilities.css?v=2.0">
+  <link rel="stylesheet" href="css/sections.css?v=10.1">
+</head>
+
+<body>
+  <!-- ====================================================
+       NAVBAR — Floating Glassmorphism
+       ==================================================== -->
+  <nav id="navbar" class="navbar glass" role="navigation" aria-label="Main navigation">
+    <div class="container flex items-center justify-between" style="padding: 0; max-width: none;">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar__logo" aria-label="Shree Vasudha Projects — Home">
+        <img src="assets/images/logo.png" alt="Shree Vasudha Projects Logo" class="navbar__logo-img">
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="navbar__links" id="nav-links">
+        <a href="index.html" class="navbar__link">Home</a>
+        <a href="about.html" class="navbar__link">About</a>
+        <div class="navbar__dropdown">
+          <a href="projects.html" class="navbar__link navbar__link--active">Projects <i data-lucide="chevron-down" style="width: 14px; height: 14px; margin-left: 2px; display: inline-block; vertical-align: middle;"></i></a>
+          <div class="navbar__dropdown-menu">
+            <a href="projects.html" class="navbar__dropdown-item">All Projects</a>
+            <a href="projects-ongoing.html" class="navbar__dropdown-item">Ongoing Projects</a>
+            <a href="projects-upcoming.html" class="navbar__dropdown-item">Upcoming Projects</a>
+            <a href="projects-completed.html" class="navbar__dropdown-item">Completed Projects</a>
+          </div>
+        </div>
+        <a href="services.html" class="navbar__link">Services</a>
+        <a href="amenities.html" class="navbar__link">Amenities</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <div class="navbar__cta hide-mobile">
+        <a href="contact.html" class="btn btn--primary">
+          Book a Visit <span class="btn__arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button class="navbar__toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__nav">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="about.html" class="mobile-menu__link">About</a>
+      <a href="projects.html" class="mobile-menu__link mobile-menu__link--active">Projects</a>
+      <a href="services.html" class="mobile-menu__link">Services</a>
+      <a href="amenities.html" class="mobile-menu__link">Amenities</a>
+      <a href="contact.html" class="mobile-menu__link">Contact</a>
+    </div>
+    <div class="mobile-menu__cta">
+      <a href="contact.html" class="btn btn--primary btn--lg">
+        Book a Visit <span class="btn__arrow">→</span>
+      </a>
+    </div>
+    <div class="mobile-menu__footer">
+      <p>Shree Vasudha Projects</p>
+      <p style="margin-top: var(--space-2);">+91 98765 43210</p>
+    </div>
+  </div>
+
+  <!-- 404 NOT FOUND SECTION -->
+  <section id="project-404-section" class="page-hero" style="min-height: 80vh; display: none;">
+    <div class="page-hero__bg" style="background: var(--color-bg); opacity: 1;"></div>
+    <div class="page-hero__content">
+      <h1 class="page-hero__title">Project Not Found</h1>
+      <p class="page-hero__subtitle" style="margin-bottom: 2rem;">The residence you are looking for does not exist or has been removed.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a href="projects.html" class="btn btn--primary">Return to Projects <span class="btn__arrow">→</span></a>
+        <a href="index.html" class="btn btn--outline" style="border-color: var(--color-border); color: var(--color-text);">Go to Homepage</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO SECTION -->
+  <section id="project-main-hero" class="page-hero" style="min-height: 70vh;">
+    <div class="page-hero__bg animate-slow-zoom" id="project-hero-bg" style="background-image: url('assets/images/hero-bg.jpg');"></div>
+    <div class="page-hero__content">
+      <div class="mb-4" id="project-status-badge">
+        <span style="background: var(--color-primary); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Loading...</span>
+      </div>
+      <h1 class="page-hero__title animate-fade-in-up" id="project-title" style="font-size: clamp(3rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 16px;">Loading Project...</h1>
+      <p class="page-hero__subtitle animate-fade-in-up delay-200" id="project-location" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <i data-lucide="map-pin"></i> <span>...</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECT DETAILS -->
+  <section id="project-main-content" class="section" style="background-color: var(--color-bg);">
+    <div class="container">
+      
+      <!-- Quick Info Bar -->
+      <div class="project-quick-info" style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: 16px; padding: clamp(16px, 4vw, 32px); display: grid; gap: 24px; margin-top: -80px; position: relative; z-index: 10; margin-bottom: 64px;">
+        <div class="quick-info-item">
+          <p class="quick-info-label">Configuration</p>
+          <p class="quick-info-value" id="project-config">-</p>
+        </div>
+        <div class="quick-info-item">
+          <p class="quick-info-label">Project Area</p>
+          <p class="quick-info-value" id="project-area">-</p>
+        </div>
+        <div class="quick-info-item last">
+          <p class="quick-info-label">Starting Price</p>
+          <p class="quick-info-value highlight" id="project-price">-</p>
+        </div>
+      </div>
+
+      <div class="project-content-grid" id="project-content-grid">
+        
+        <!-- Main Content -->
+        <div>
+          <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Overview</h2>
+          <div id="project-description" style="color: var(--color-text-secondary); line-height: 1.8; font-size: 16px; margin-bottom: 48px;">
+            <p>Loading details...</p>
+          </div>
+
+          <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Project Highlights</h2>
+          <div id="project-highlights" style="color: var(--color-text-secondary); line-height: 1.8; font-size: 16px;">
+            <p>Loading highlights...</p>
+          </div>
+
+          <!-- Media Sections (Populated by JS if exists) -->
+          <div id="project-media-container" style="margin-top: 64px; display: none; flex-direction: column; gap: 64px;">
+            
+            <div id="project-video-section" style="display: none;">
+              <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Walkthrough Video</h2>
+              <div style="border-radius: 16px; overflow: hidden; border: 1px solid var(--color-border); aspect-video;">
+                <video id="project-video" controls style="width: 100%; height: 100%; object-fit: cover; background: #000;"></video>
+              </div>
+            </div>
+
+            <div id="project-gallery-section" style="display: none;">
+              <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Gallery</h2>
+              <div id="project-gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
+                <!-- Gallery images go here -->
+              </div>
+            </div>
+
+            <div id="project-floorplans-section" style="display: none;">
+              <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Floor Plans</h2>
+              <div id="project-floorplans-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
+                <!-- Floor plan images go here -->
+              </div>
+            </div>
+
+            <div id="project-brochure-section" style="display: none;">
+              <div style="background: linear-gradient(135deg, rgba(181, 155, 84, 0.1) 0%, rgba(0,0,0,0) 100%); border: 1px solid var(--color-primary-dark); border-radius: 16px; padding: 48px 32px; text-align: center;">
+                <h3 style="font-family: var(--font-heading); font-size: 28px; color: var(--color-primary); margin-bottom: 16px;">Download Project Brochure</h3>
+                <p style="color: var(--color-text-secondary); margin-bottom: 32px;">Get all the detailed specifications, master plan, and floor plans in one comprehensive document.</p>
+                <a href="#" id="project-brochure-btn" target="_blank" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                  <i data-lucide="download"></i> Download PDF
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sidebar / Inquiry Form -->
+        <div>
+          <div class="card" style="padding: 32px; position: sticky; top: 120px;">
+            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-text); margin-bottom: 24px;">Interested in this project?</h3>
+            
+            <form id="project-inquiry-form">
+              <input type="hidden" id="inquiry-project" name="project_interest" value="">
+              
+              <div style="margin-bottom: 16px;">
+                <input type="text" id="inquiry-name" placeholder="Full Name" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: #fff;">
+              </div>
+              <div style="margin-bottom: 16px;">
+                <input type="email" id="inquiry-email" placeholder="Email Address" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: #fff;">
+              </div>
+              <div style="margin-bottom: 16px;">
+                <input type="tel" id="inquiry-phone" placeholder="Phone Number" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: #fff;">
+              </div>
+              <div style="margin-bottom: 24px;">
+                <textarea id="inquiry-message" rows="3" placeholder="Message (Optional)" style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: #fff; resize: vertical;"></textarea>
+              </div>
+              
+              <div id="inquiry-feedback" style="display:none; margin-bottom: 16px; padding: 16px; border-radius: 8px; font-size: 14px;"></div>
+              
+              <button type="submit" id="inquiry-submit" class="btn btn--primary" style="width: 100%;">Enquire Now</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+    <!-- ==========================================
+       PRE-FOOTER CTA
+       ========================================== -->
+  <section class="luxury-cta">
+    <div class="luxury-cta__bg"></div>
+    <div class="luxury-cta__container">
+        <h2 class="luxury-cta__title">READY TO BUILD YOUR LEGACY?</h2>
+        <p class="luxury-cta__desc">Experience private consultations with our luxury property advisors.</p>
+        <a href="contact.html" class="luxury-cta__btn">Schedule Private Consultation</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-container stagger-children">
+        <div class="footer-column reveal">
+            <a href="index.html">
+              <img src="assets/images/logo.png" alt="Shree Vasudha Projects" class="footer-logo" loading="lazy">
+            </a>
+            <p class="footer-desc">Crafting premium residential communities with timeless architecture and exceptional quality.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-column reveal">
+            <h4 class="footer-heading">PROJECTS</h4>
+            <ul class="footer-links">
+                <li><a href="projects.html">All Projects</a></li>
+                <li><a href="projects-ongoing.html">Ongoing Projects</a></li>
+                <li><a href="projects-upcoming.html">Upcoming Projects</a></li>
+                <li><a href="projects-completed.html">Completed Projects</a></li>
+                <li><a href="#">Future Developments</a></li>
+            </ul>
+        </div>
+        <div class="footer-column reveal">
+            <h4 class="footer-heading">COMPANY</h4>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="amenities.html">Amenities</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-column reveal">
+            <h4 class="footer-heading">CONTACT</h4>
+            <div class="footer-contact-item">
+              <i data-lucide="map-pin"></i>
+              <div class="footer-contact-text">
+                <p>Plot - 285, 5th Floor</p>
+                <p>H.No. 5-6-190</p>
+                <p>Vaidhehi Nagar, Saheb Nagar Kalan</p>
+                <p>BN Reddy Nagar, R.R. Dist.</p>
+                <p>Telangana - 500070</p>
+              </div>
+            </div>
+            <div class="footer-contact-item">
+              <i data-lucide="phone"></i>
+              <p><a href="tel:+917702436052">+91 77024 36052</a></p>
+            </div>
+            <div class="footer-contact-item" style="display:flex; align-items:flex-start;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A35A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="email-fallback-icon" style="flex-shrink:0; margin-top:4px; margin-right:20px;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <p><a href="mailto:shreevasudhaprojects@gmail.com">shreevasudhaprojects@gmail.com</a></p>
+            </div>
+            <div class="footer-contact-item">
+              <i data-lucide="clock"></i>
+              <div class="footer-contact-text">
+                <p>Monday – Saturday</p>
+                <p>9:30 AM – 7:00 PM</p>
+                <p>Sunday Closed</p>
+              </div>
+            </div>
+        </div>
+        <div class="footer-column reveal">
+            <h4 class="footer-heading">VIP NEWSLETTER</h4>
+            <p class="footer-desc footer-desc--newsletter">Stay informed about exclusive launches, investment opportunities, and premium developments.</p>
+            <form class="footer-newsletter-form" onsubmit="event.preventDefault();">
+              <input type="email" placeholder="Email Address" required class="footer-input">
+              <button type="submit" class="footer-btn-submit"><i data-lucide="arrow-right"></i></button>
+            </form>
+            <p class="footer-privacy">We respect your privacy. No spam.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-copyright">© 2026 Shree Vasudha Projects</div>
+        <div class="footer-ornament"><i data-lucide="diamond"></i></div>
+        <div class="footer-legal">
+            <a href="#">Privacy</a>
+            <span class="gold-divider"></span>
+            <a href="#">Terms</a>
+            <span class="gold-divider"></span>
+            <a href="#">Cookies</a>
+            <span class="gold-divider"></span>
+            <a href="#">RERA</a>
+        </div>
+    </div>
+</footer>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+
+  <!-- Core JS -->
+  <script src="js/app.js?v=2.0"></script>
+  <script src="js/fetch-settings.js"></script>
+  <script src="js/fetch-project-detail.js"></script>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

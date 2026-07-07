@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shree Vasudha Projects — Premium luxury real estate developer crafting exceptional residences and commercial spaces with timeless architectural excellence.">
+  <meta name="theme-color" content="#141618">
+
+  <title>Shree Vasudha Projects — Luxury Real Estate Developer</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts — Playfair Display, Inter, Cormorant Garamond -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="css/tokens.css?v=2.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/components.css?v=2.0">
+  <link rel="stylesheet" href="css/animations.css?v=2.1">
+  <link rel="stylesheet" href="css/utilities.css?v=2.0">
+  <link rel="stylesheet" href="css/sections.css?v=10.0">
+  <link rel="stylesheet" href="css/about-luxury.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+</head>
+
+<body>
+
+  <!-- ====================================================
+       NAVBAR — Floating Glassmorphism
+       ==================================================== -->
+  <nav id="navbar" class="navbar glass" role="navigation" aria-label="Main navigation">
+    <div class="container flex items-center justify-between" style="padding: 0; max-width: none;">
+
+      <!-- Logo -->
+      <a href="index.html" class="navbar__logo" aria-label="Shree Vasudha Projects — Home">
+        <img src="assets/images/logo.png" alt="Shree Vasudha Projects Logo" class="navbar__logo-img">
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="navbar__links" id="nav-links">
+        <a href="index.html" class="navbar__link">Home</a>
+        <a href="about.html" class="navbar__link">About</a>
+        <div class="navbar__dropdown">
+          <a href="projects.html" class="navbar__link ">Projects <i data-lucide="chevron-down" style="width: 14px; height: 14px; margin-left: 2px; display: inline-block; vertical-align: middle;"></i></a>
+          <div class="navbar__dropdown-menu">
+            <a href="projects.html" class="navbar__dropdown-item">All Projects</a>
+            <a href="projects-ongoing.html" class="navbar__dropdown-item">Ongoing Projects</a>
+            <a href="projects-upcoming.html" class="navbar__dropdown-item">Upcoming Projects</a>
+            <a href="projects-completed.html" class="navbar__dropdown-item">Completed Projects</a>
+          </div>
+        </div>
+        <a href="services.html" class="navbar__link">Services</a>
+        <a href="amenities.html" class="navbar__link">Amenities</a>
+        <a href="contact.html" class="navbar__link">Contact</a>
+      </div>
+
+      <!-- Desktop CTA -->
+      <div class="navbar__cta hide-mobile">
+        <a href="contact.html" class="btn btn--primary">
+          Book a Visit <span class="btn__arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button class="navbar__toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__nav">
+      <a href="index.html" class="mobile-menu__link">Home</a>
+      <a href="about.html" class="mobile-menu__link">About</a>
+      <a href="projects.html" class="mobile-menu__link mobile-menu__link--active">Projects</a>
+      <a href="services.html" class="mobile-menu__link">Services</a>
+      <a href="amenities.html" class="mobile-menu__link">Amenities</a>
+      <a href="contact.html" class="mobile-menu__link">Contact</a>
+    </div>
+    <div class="mobile-menu__cta">
+      <a href="contact.html" class="btn btn--primary btn--lg">
+        Book a Visit <span class="btn__arrow">→</span>
+      </a>
+    </div>
+    <div class="mobile-menu__footer">
+      <p>Shree Vasudha Projects</p>
+      <p style="margin-top: var(--space-2);">+91 98765 43210</p>
+    </div>
+  </div>
+
+
+  <!-- ====================================================
+       HERO SECTION
+       ==================================================== -->
+
+  <section class="page-hero page-hero--upcoming">
+    <div class="page-hero__bg animate-slow-zoom"></div>
+    <div class="page-hero__content">
+      <div class="badge-large badge--gold">Coming Soon</div>
+      <h1 class="page-hero__title animate-fade-in-up">Vasudha Altamount</h1>
+      <p class="page-hero__subtitle animate-fade-in-up delay-200">Bespoke sky mansions in Jubilee Hills. Launching September 2026.</p>
+    </div>
+  </section>
+
+  <section class="section projects-page">
+    <div class="container">
+      <div class="project-filter-tabs">
+        <a href="projects.html" class="filter-tab">All Projects</a>
+        <a href="projects-ongoing.html" class="filter-tab">Ongoing</a>
+        <a href="projects-upcoming.html" class="filter-tab active">Upcoming</a>
+        <a href="projects-completed.html" class="filter-tab">Completed</a>
+      </div>
+      <div class="project-grid projects-grid">
+        <!-- Projects will be dynamically loaded here by fetch-projects.js -->
+      </div>
+    </div>
+  </section>
+<footer class="footer-luxury">
+    <div class="footer-luxury__bg">
+        <div class="footer-luxury__gradient"></div>
+        <div class="footer-luxury__noise"></div>
+    </div>
+    <div class="footer-container stagger-children">
+        <div class="footer-column reveal">
+            <a href="index.html" class="footer-logo-link">
+              <img src="assets/images/logo.png" alt="Shree Vasudha Projects" class="footer-logo" loading="lazy">
+            </a>
+            <p class="footer-desc">Crafting premium residential communities with timeless architecture and exceptional quality. Elevating lifestyles since 2000.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Instagram" class="social-glass"><i data-lucide="instagram"></i></a>
+                <a href="#" aria-label="LinkedIn" class="social-glass"><i data-lucide="linkedin"></i></a>
+                <a href="#" aria-label="Facebook" class="social-glass"><i data-lucide="facebook"></i></a>
+                <a href="#" aria-label="YouTube" class="social-glass"><i data-lucide="youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-column reveal">
+            <h4 class="footer-heading">PROJECTS</h4>
+            <ul class="footer-links">
+                <li><a href="projects.html" class="hover-underline">All Projects</a></li>
+                <li><a href="projects-ongoing.html" class="hover-underline">Ongoing Projects</a></li>
+                <li><a href="projects-upcoming.html" class="hover-underline">Upcoming Projects</a></li>
+                <li><a href="projects-completed.html" class="hover-underline">Completed Projects</a></li>
+                <li><a href="#" class="hover-underline">Future Developments</a></li>
+            </ul>
+        </div>
+        <div class="footer-column reveal">
+            <h4 class="footer-heading">COMPANY</h4>
+            <ul class="footer-links">
+                <li><a href="index.html" class="hover-underline">Home</a></li>
+                <li><a href="about.html" class="hover-underline">About</a></li>
+                <li><a href="services.html" class="hover-underline">Services</a></li>
+                <li><a href="amenities.html" class="hover-underline">Amenities</a></li>
+                <li><a href="contact.html" class="hover-underline">Contact</a></li>
+                <li><a href="#" class="hover-underline">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-column reveal">
+            <h4 class="footer-heading">CONTACT</h4>
+            <div class="footer-contact-item">
+              <div class="contact-icon-glass"><i data-lucide="map-pin"></i></div>
+              <div class="footer-contact-text" id="footer-address">
+                <p>Plot - 285, 5th Floor<br>H.No. 5-6-190<br>Vaidhehi Nagar, Saheb Nagar Kalan<br>BN Reddy Nagar, R.R. Dist.<br>Telangana - 500070</p>
+              </div>
+            </div>
+            <div class="footer-contact-item mt-4">
+              <div class="contact-icon-glass"><i data-lucide="phone"></i></div>
+              <p><a href="tel:+917702436052">+91 77024 36052</a></p>
+            </div>
+            <div class="footer-contact-item mt-4">
+              <div class="contact-icon-glass"><i data-lucide="mail"></i></div>
+              <p><a href="mailto:shreevasudhaprojects@gmail.com">shreevasudhaprojects@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-column reveal">
+            <h4 class="footer-heading">VIP NEWSLETTER</h4>
+            <p class="footer-desc footer-desc--newsletter">Stay informed about exclusive launches, investment opportunities, and premium developments.</p>
+            <form class="footer-newsletter-form glass-input-group" onsubmit="event.preventDefault();">
+              <input type="email" placeholder="Email Address" required class="footer-input-glass">
+              <button type="submit" class="footer-btn-glass"><i data-lucide="arrow-right"></i></button>
+            </form>
+            <p class="footer-privacy">We respect your privacy. No spam.</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-copyright">© 2026 Shree Vasudha Projects. All rights reserved.</div>
+        <div class="footer-legal">
+            <a href="#" class="hover-underline">Privacy</a>
+            <span class="gold-divider"></span>
+            <a href="#" class="hover-underline">Terms</a>
+            <span class="gold-divider"></span>
+            <a href="#" class="hover-underline">Cookies</a>
+            <span class="gold-divider"></span>
+            <a href="#" class="hover-underline">RERA</a>
+        </div>
+    </div>
+</footer>
+
+  <!-- GSAP for Luxury Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/about-animations.js"></script>
+
+  <!-- Supabase & Data Fetching -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/fetch-projects.js?v=6.0"></script>
+  <script src="js/fetch-homepage.js"></script>
+  <script src="js/fetch-about.js"></script>
+
+  <!-- Core JS -->
+  <script src="js/app.js?v=2.0"></script>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    });
+  </script>
+
+  <!-- Global Settings -->
+  <script src="js/fetch-settings.js"></script>
+</body>
+</html>

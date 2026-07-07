@@ -1,0 +1,73 @@
+document.addEventListener('DOMContentLoaded', async () => {
+  if (!window.supabaseClient) return;
+
+  try {
+    const { data } = await window.supabaseClient
+      .from('settings')
+      .select('value')
+      .eq('key', 'global')
+      .single();
+
+    if (data && data.value) {
+      const v = data.value;
+
+      // Update Phones globally
+      if (v.phone) {
+        document.querySelectorAll('a[href^="tel:"]').forEach(el => {
+          el.href = `tel:${v.phone.replace(/\s+/g, '')}`;
+          el.textContent = v.phone;
+        });
+      }
+
+      // Update Emails globally
+      if (v.email) {
+        document.querySelectorAll('a[href^="mailto:"]').forEach(el => {
+          el.href = `mailto:${v.email}`;
+          // Only replace text if it looks like an email to avoid replacing buttons
+          if (el.textContent.includes('@')) {
+            el.textContent = v.email;
+          }
+        });
+      }
+
+      // Update Addresses
+      if (v.address) {
+        const formattedAddress = v.address.replace(/\n/g, '<br>');
+        
+        // Footer
+        const footerAddress = document.getElementById('footer-address');
+        if (footerAddress) {
+          footerAddress.innerHTML = `<p>${v.address.split(',').join('</p><p>')}</p>`;
+        }
+
+        // Contact Page
+        const contactAddress = document.getElementById('contact-page-address');
+        if (contactAddress) {
+          // If maps link is provided, wrap it
+          if (v.maps_link) {
+            contactAddress.innerHTML = `<a href="${v.maps_link}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">${formattedAddress}</a>`;
+          } else {
+            contactAddress.innerHTML = formattedAddress;
+          }
+        }
+      }
+
+      // Update Business Hours
+      if (v.business_hours) {
+        // Footer
+        const footerHours = document.getElementById('footer-hours');
+        if (footerHours) {
+          footerHours.innerHTML = `<p>${v.business_hours.split(',').join('</p><p>')}</p>`;
+        }
+
+        // Contact Page
+        const contactHours = document.getElementById('contact-page-hours');
+        if (contactHours) {
+          contactHours.innerHTML = v.business_hours.replace(/\n/g, '<br>');
+        }
+      }
+    }
+  } catch (err) {
+    console.error("Error fetching global settings:", err);
+  }
+});

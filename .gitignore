@@ -1,0 +1,13 @@
+.DS_Store
+*.py
+*.txt
+*.log
+node_modules/
+.env
+.next/
+admin-portal/node_modules/
+admin-portal/.next/
+admin-portal/out/
+admin-portal/build/
+admin-portal/.env
+admin-portal/.env.local
