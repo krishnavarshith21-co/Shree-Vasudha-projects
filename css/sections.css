@@ -5003,3 +5003,49 @@ img {
   pointer-events: none;
   z-index: -1;
 }
+
+/* ====================================================
+   PROJECTS LUXURY THEME (Section Background Redesign)
+   ==================================================== */
+
+/* Hide noisy global elements only on projects page */
+body.projects-luxury-theme #bg-shapes {
+  display: none !important;
+}
+
+/* Redesign the background BELOW the hero section */
+body.projects-luxury-theme .projects-page {
+  /* Override any existing backgrounds/grids */
+  background: #0A0A0A !important;
+  background-image:
+    /* Ambient glow at the top center of the content section */
+    radial-gradient(circle at 50% 0%, rgba(212,175,55,0.05) 0%, transparent 45%),
+    /* Layered vertical gradient */
+    linear-gradient(180deg, #0A0A0A 0%, #0C0C0C 35%, #0E0E0E 70%, #111111 100%) !important;
+  
+  /* Remove old box shadow and add subtle depth/vignette */
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.5) !important;
+  position: relative;
+}
+
+/* Ensure no floating grid pseudo-elements show up */
+body.projects-luxury-theme .projects-page::before {
+  display: none !important;
+}
+
+/* Add the matte luxury noise texture just over the projects section */
+body.projects-luxury-theme .projects-page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep content above the noise texture */
+body.projects-luxury-theme .projects-page .container {
+  position: relative;
+  z-index: 1;
+}
