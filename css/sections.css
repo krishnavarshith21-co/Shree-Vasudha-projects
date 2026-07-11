@@ -4863,6 +4863,7 @@ img {
   left: 20px;
   background: rgba(20, 20, 20, 0.65);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(201, 164, 76, 0.3);
   color: #fff;
   padding: 6px 16px;
@@ -4873,6 +4874,31 @@ img {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.portfolio-card__status:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.portfolio-card__status--ongoing {
+  background: rgba(22, 58, 36, 0.85); /* Deep Emerald Green */
+  border: 1px solid #2E8B57; /* Emerald */
+  color: #A7F3D0; /* Soft Mint */
+}
+
+.portfolio-card__status--upcoming {
+  background: rgba(58, 42, 18, 0.85); /* Deep Bronze */
+  border: 1px solid #C58A1E; /* Luxury Gold */
+  color: #F5D08A; /* Warm Gold */
+}
+
+.portfolio-card__status--completed {
+  background: rgba(59, 21, 24, 0.85); /* Deep Burgundy */
+  border: 1px solid #B53A3A; /* Premium Red */
+  color: #F6B0B0; /* Soft Rose */
 }
 
 .portfolio-card__content {

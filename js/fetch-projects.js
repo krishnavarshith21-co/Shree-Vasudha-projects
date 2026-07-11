@@ -58,18 +58,20 @@ document.addEventListener('DOMContentLoaded', async () => {
       'assets/project-2.jpg',
       'assets/project-3.jpg'
     ];
-
+    
     projects.forEach((project, index) => {
       // Use uploaded image or fallback to a default image
       const imageUrl = project.image_url || defaultImages[index % defaultImages.length];
       
       // Calculate transition delay for staggered animation
-      const delay = index * 100;
+      const delay = (index % 10) * 100;
+      
+      const statusClass = 'portfolio-card__status--' + (project.status ? project.status.toLowerCase() : 'unknown');
 
       const cardHTML = `
         <div class="portfolio-card reveal" style="transition-delay: ${delay}ms;">
           <div class="portfolio-card__image-wrapper">
-            <div class="portfolio-card__status">${project.status}</div>
+            <div class="portfolio-card__status ${statusClass}">${project.status}</div>
             <img src="${imageUrl}" alt="${project.name}" class="portfolio-card__image">
             <div class="portfolio-card__overlay"></div>
           </div>
