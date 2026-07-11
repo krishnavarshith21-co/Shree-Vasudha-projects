@@ -34,6 +34,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (error) throw error;
 
+    const isAllProjectsPage = path.includes('projects.html') || (path.includes('projects') && !path.includes('ongoing') && !path.includes('upcoming') && !path.includes('completed'));
+
+    if (isAllProjectsPage) {
+      const statusOrder = { 'Ongoing': 1, 'Upcoming': 2, 'Completed': 3 };
+      projects.sort((a, b) => {
+        const orderA = statusOrder[a.status] || 99;
+        const orderB = statusOrder[b.status] || 99;
+        return orderA - orderB;
+      });
+    }
+
     projectsGrid.innerHTML = ''; // Clear loading
 
     if (projects.length === 0) {
