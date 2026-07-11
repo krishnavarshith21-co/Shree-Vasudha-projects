@@ -36,25 +36,31 @@
     top: 16px;
     width: 92%;
     height: 68px;
-    padding: 0 var(--space-6);
+    padding: 0 var(--space-5);
   }
 
   .navbar__links {
-    gap: 24px; /* Tighten link spacing so they never crowd */
+    gap: 18px; /* Tighten link spacing so they never crowd */
   }
 
   .navbar__link {
-    font-size: 14.5px;
+    font-size: 13.5px;
   }
 
   .navbar__cta .btn {
-    height: 44px !important;
-    padding: 0 22px !important;
-    font-size: 13.5px !important;
+    height: 42px !important;
+    padding: 0 18px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap;
   }
 
   .navbar__logo-img {
-    height: 96px; /* Scale logo down proportionally */
+    height: 80px; /* Scale logo down proportionally */
+  }
+
+  /* Ensure logo text won't push nav items */
+  .navbar__logo-text {
+    font-size: 1rem !important;
   }
 
   /* ─── Hero Section ────────────────────────────────────────── */
