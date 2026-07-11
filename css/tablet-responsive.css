@@ -1,9 +1,9 @@
 /* ============================================================
    SHREE VASUDHA PROJECTS — Tablet Responsive Styles
-   Dedicated tablet breakpoints: 768px – 1023px
+   Dedicated tablet breakpoints: 768px – 1024px
    Split into:
      Tablet Portrait  → 768px – 991px
-     Tablet Landscape → 992px – 1023px
+     Tablet Landscape → 992px – 1024px
    
    IMPORTANT: Desktop (≥1024px) and Mobile (<768px) are
    intentionally NOT touched in this file.
@@ -11,11 +11,11 @@
 
 
 /* ===========================================================
-   SHARED TABLET RANGE (768px – 1023px)
+   SHARED TABLET RANGE (768px – 1024px)
    Applies to both portrait and landscape tablets
    =========================================================== */
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1024px) {
 
   /* ─── Global Spacing ──────────────────────────────────────── */
   :root {
@@ -486,11 +486,11 @@
 
 
 /* ===========================================================
-   TABLET LANDSCAPE ONLY (992px – 1023px)
+   TABLET LANDSCAPE ONLY (992px – 1024px)
    Fine-tune for the wider tablet viewport
    =========================================================== */
 
-@media (min-width: 992px) and (max-width: 1023px) {
+@media (min-width: 992px) and (max-width: 1024px) {
 
   /* Restore hero two-column at landscape if space allows */
   .hero__inner {
