@@ -241,33 +241,47 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', resize);
     resize();
 
+    function getParticleColors() {
+      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+      if (theme === 'light') {
+        return [
+          'rgba(200, 155, 60, 0.25)',  // Gold (subtle)
+          'rgba(168, 122, 30, 0.20)',  // Dark gold
+          'rgba(140, 107, 46, 0.18)'  // Bronze
+        ];
+      }
+      return [
+        'rgba(255, 255, 255, 0.4)',  // White
+        'rgba(212, 175, 55, 0.5)',   // Gold
+        'rgba(181, 155, 84, 0.6)'    // Theme Gold
+      ];
+    }
+
     class Particle {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 2 + 0.5; // 0.5px to 2.5px
-        this.speedY = Math.random() * -0.5 - 0.1; // Float slowly upwards
-        this.speedX = Math.random() * 0.4 - 0.2; // Drift left/right
+        this.size = Math.random() * 2 + 0.5;
+        this.speedY = Math.random() * -0.5 - 0.1;
+        this.speedX = Math.random() * 0.4 - 0.2;
         
-        // Luxury gold and white colors
-        const colors = [
-          'rgba(255, 255, 255, 0.4)', // White
-          'rgba(212, 175, 55, 0.5)',  // Gold
-          'rgba(181, 155, 84, 0.6)'   // Theme Gold
-        ];
+        const colors = getParticleColors();
         this.color = colors[Math.floor(Math.random() * colors.length)];
         
-        // Twinkling effect
         this.opacity = Math.random();
         this.fadeSpeed = Math.random() * 0.02 + 0.005;
         this.fadingOut = Math.random() > 0.5;
+      }
+
+      refreshColor() {
+        const colors = getParticleColors();
+        this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
       update() {
         this.y += this.speedY;
         this.x += this.speedX;
 
-        // Twinkle
         if (this.fadingOut) {
           this.opacity -= this.fadeSpeed;
           if (this.opacity <= 0.1) this.fadingOut = false;
@@ -276,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if (this.opacity >= 1) this.fadingOut = true;
         }
 
-        // Reset if off screen
         if (this.y < -10 || this.x < -10 || this.x > width + 10) {
           this.y = height + 10;
           this.x = Math.random() * width;
@@ -287,19 +300,22 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         
-        // Apply twinkle opacity to base color
         const baseColor = this.color.substring(0, this.color.lastIndexOf(','));
-        ctx.fillStyle = `${baseColor}, ${this.opacity * 0.8})`; // Max opacity 0.8 for subtlety
+        ctx.fillStyle = `${baseColor}, ${this.opacity * 0.8})`;
         
         ctx.fill();
       }
     }
 
-    // Create particles based on screen size (subtle amount)
     const particleCount = Math.min(Math.floor(window.innerWidth / 15), 100);
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
+
+    // Listen for theme changes and refresh particle colors
+    window.addEventListener('themechange', () => {
+      particles.forEach(p => p.refreshColor());
+    });
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
@@ -342,17 +358,27 @@ document.addEventListener('DOMContentLoaded', () => {
       mouse.y = null;
     });
 
+    function getHeroParticleColor() {
+      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+      if (theme === 'light') {
+        return `rgba(168, 122, 30, ${Math.random() * 0.3 + 0.1})`;
+      }
+      return `rgba(212, 175, 55, ${Math.random() * 0.5 + 0.2})`;
+    }
+
     class HeroParticle {
       constructor() {
         this.x = Math.random() * heroWidth;
         this.y = Math.random() * heroHeight;
-        this.size = Math.random() * 2 + 0.5; // 0.5px to 2.5px
+        this.size = Math.random() * 2 + 0.5;
         this.speedX = Math.random() * 0.5 - 0.25;
         this.speedY = Math.random() * 0.5 - 0.25;
-        // Accent color matching the theme (gold/warm)
-        this.color = `rgba(212, 175, 55, ${Math.random() * 0.5 + 0.2})`;
+        this.color = getHeroParticleColor();
         this.baseX = this.x;
         this.baseY = this.y;
+      }
+      refreshColor() {
+        this.color = getHeroParticleColor();
       }
       update() {
         this.x += this.speedX;
@@ -363,13 +389,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (this.y > heroHeight) this.y = 0;
         else if (this.y < 0) this.y = heroHeight;
 
-        // Mouse interaction (repel slightly or move towards)
         if (mouse.x != null && mouse.y != null) {
           const dx = mouse.x - this.x;
           const dy = mouse.y - this.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < 150) {
-            // Parallax repel
             this.x -= dx * 0.02;
             this.y -= dy * 0.02;
           }
@@ -391,6 +415,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
     initHeroParticles();
+
+    // Refresh hero particle colors on theme change
+    window.addEventListener('themechange', () => {
+      heroParticlesArray.forEach(p => p.refreshColor());
+    });
 
     const animateHeroParticles = () => {
       heroCtx.clearRect(0, 0, heroWidth, heroHeight);

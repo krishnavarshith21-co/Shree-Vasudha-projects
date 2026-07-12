@@ -1,0 +1,2653 @@
+/* ============================================================
+   SHREE VASUDHA PROJECTS — Luxury Light Theme
+   An independently-designed premium light aesthetic inspired
+   by India's finest luxury real estate developers.
+   ============================================================ */
+
+
+/* ==========================================================
+   THEME TRANSITION — Smooth 500ms switch
+   Applied via JS when toggling themes
+   ========================================================== */
+
+html.theme-transitioning,
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
+  transition: background-color 500ms ease,
+              color 500ms ease,
+              border-color 500ms ease,
+              box-shadow 500ms ease,
+              fill 500ms ease,
+              stroke 500ms ease,
+              background 500ms ease,
+              opacity 500ms ease !important;
+}
+
+
+/* ==========================================================
+   CSS CUSTOM PROPERTY OVERRIDES
+   Every token from tokens.css redefined for light theme
+   ========================================================== */
+
+[data-theme="light"] {
+
+  /* Primary Backgrounds */
+  --color-bg-primary:       #F8F6F2;
+  --color-bg-secondary:     #F2EEE7;
+  --color-bg-tertiary:      #EDE8DF;
+  --color-bg-card:          #FFFFFF;
+  --color-bg-card-hover:    #FFFDF8;
+
+  /* Accent — Warm Gold (unchanged tone, adjusted for light) */
+  --color-accent:           #C89B3C;
+  --color-accent-light:     #D4AD56;
+  --color-accent-dark:      #A87A1E;
+  --color-accent-muted:     rgba(200, 155, 60, 0.12);
+  --color-accent-subtle:    rgba(200, 155, 60, 0.06);
+
+  /* Text */
+  --color-text-primary:     #1E1E1E;
+  --color-text-secondary:   #5A5A5A;
+  --color-text-tertiary:    #8A8A8A;
+  --color-text-accent:      #A87A1E;
+  --color-text-inverse:     #FFFFFF;
+
+  /* Borders */
+  --color-border:           #E5DED2;
+  --color-border-light:     #D8CFC0;
+  --color-border-accent:    rgba(200, 155, 60, 0.35);
+  --color-border-focus:     rgba(200, 155, 60, 0.60);
+
+  /* Overlays */
+  --color-overlay-dark:     rgba(0, 0, 0, 0.25);
+  --color-overlay-medium:   rgba(0, 0, 0, 0.15);
+  --color-overlay-light:    rgba(0, 0, 0, 0.06);
+
+  /* Gradients */
+  --gradient-gold:          linear-gradient(135deg, #E7C564, #C89B3C);
+  --gradient-gold-hover:    linear-gradient(135deg, #F0D478, #D4AD56);
+  --gradient-dark:          linear-gradient(180deg, #F8F6F2, #F2EEE7);
+  --gradient-card:          linear-gradient(160deg, rgba(200, 155, 60, 0.04), rgba(200, 155, 60, 0.01));
+  --gradient-hero:          linear-gradient(180deg, rgba(248, 246, 242, 0.15) 0%, rgba(248, 246, 242, 0.85) 100%);
+  --gradient-section:       linear-gradient(180deg, #F8F6F2 0%, #F2EEE7 100%);
+  --gradient-section-alt:   linear-gradient(180deg, #F2EEE7 0%, #F8F6F2 100%);
+
+  /* Status */
+  --color-success:          #1A8754;
+  --color-error:            #C0392B;
+
+  /* Shadows — Much softer for light */
+  --shadow-sm:     0  2px  8px   rgba(0, 0, 0, 0.05);
+  --shadow-md:     0  4px  20px  rgba(0, 0, 0, 0.08);
+  --shadow-lg:     0  8px  40px  rgba(0, 0, 0, 0.10);
+  --shadow-xl:     0  16px 64px  rgba(0, 0, 0, 0.12);
+  --shadow-glow:   0  0    30px  rgba(200, 155, 60, 0.12);
+  --shadow-card:   0  4px  24px  rgba(0, 0, 0, 0.06),
+                   0  1px  3px   rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0  12px  48px rgba(0, 0, 0, 0.10),
+                       0  0     20px rgba(200, 155, 60, 0.08);
+
+  /* Glassmorphism — White frosted glass */
+  --glass-bg:            rgba(255, 255, 255, 0.72);
+  --glass-bg-heavy:      rgba(255, 255, 255, 0.85);
+  --glass-border:        rgba(200, 155, 60, 0.15);
+  --glass-border-light:  rgba(200, 155, 60, 0.20);
+  --glass-blur:          20px;
+  --glass-blur-heavy:    30px;
+  --glass-shadow:        0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ==========================================================
+   SCROLLBAR — Light Theme
+   ========================================================== */
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #F2EEE7;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(200, 155, 60, 0.25);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 155, 60, 0.40);
+}
+
+html[data-theme="light"] {
+  scrollbar-color: rgba(200, 155, 60, 0.25) #F2EEE7;
+}
+
+/* Selection */
+[data-theme="light"] ::selection {
+  background: rgba(200, 155, 60, 0.20);
+  color: #1E1E1E;
+}
+
+
+/* ==========================================================
+   BODY — Light luxury layered background
+   ========================================================== */
+
+[data-theme="light"] body {
+  background-color: #F8F6F2;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(200, 155, 60, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(200, 155, 60, 0.03) 0%, transparent 50%);
+  color: #1E1E1E;
+}
+
+
+/* ==========================================================
+   NAVBAR — Frosted White Glass
+   ========================================================== */
+
+[data-theme="light"] .navbar {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(200, 155, 60, 0.20);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
+              0 1px 0 rgba(200, 155, 60, 0.08);
+}
+
+[data-theme="light"] .navbar::before {
+  background: linear-gradient(90deg, transparent, rgba(200, 155, 60, 0.08), transparent);
+}
+
+[data-theme="light"] .navbar::after {
+  background-image: radial-gradient(rgba(200, 155, 60, 0.08) 1px, transparent 1px);
+  opacity: 0.4;
+}
+
+[data-theme="light"] .navbar--scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08),
+              0 1px 0 rgba(200, 155, 60, 0.12);
+}
+
+/* Nav links — dark text */
+[data-theme="light"] .navbar__link {
+  color: rgba(30, 30, 30, 0.85);
+}
+
+[data-theme="light"] .navbar__link:hover {
+  color: #C89B3C;
+  text-shadow: 0 2px 8px rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .navbar__link::after {
+  background: #C89B3C;
+}
+
+[data-theme="light"] .navbar__link--active {
+  color: #C89B3C !important;
+}
+
+[data-theme="light"] .navbar__link--active::before {
+  background: #C89B3C;
+  box-shadow: 0 0 8px rgba(200, 155, 60, 0.5);
+}
+
+/* Navbar CTA */
+[data-theme="light"] .navbar__cta .btn {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%) !important;
+  color: #1E1E1E !important;
+  box-shadow: 0 4px 16px rgba(200, 155, 60, 0.20) !important;
+}
+
+[data-theme="light"] .navbar__cta .btn:hover {
+  background: linear-gradient(135deg, #F0D478 0%, #D4AD56 100%) !important;
+  box-shadow: 0 8px 24px rgba(200, 155, 60, 0.30) !important;
+}
+
+/* Hamburger toggle */
+[data-theme="light"] .navbar__toggle span {
+  background: #1E1E1E;
+}
+
+[data-theme="light"] .navbar__toggle:hover {
+  background: rgba(200, 155, 60, 0.08);
+}
+
+/* Dropdown */
+[data-theme="light"] .navbar__dropdown-menu {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .navbar__dropdown-item {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .navbar__dropdown-item:hover {
+  color: #C89B3C;
+  background: rgba(200, 155, 60, 0.06);
+}
+
+
+/* ==========================================================
+   MOBILE MENU — White Glass
+   ========================================================== */
+
+[data-theme="light"] .mobile-menu {
+  background: rgba(248, 246, 242, 0.97);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+[data-theme="light"] .mobile-menu__link {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .mobile-menu__link:hover {
+  color: #1E1E1E;
+  background: rgba(200, 155, 60, 0.06);
+}
+
+[data-theme="light"] .mobile-menu__link--active {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .mobile-menu__footer p {
+  color: #8A8A8A;
+}
+
+
+/* ==========================================================
+   BUTTONS — Light Theme
+   ========================================================== */
+
+/* Primary — Gold gradient with dark text */
+[data-theme="light"] .btn--primary {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%);
+  color: #1E1E1E !important;
+  box-shadow: 0 4px 15px rgba(200, 155, 60, 0.25);
+}
+
+[data-theme="light"] .btn--primary:hover {
+  background: linear-gradient(135deg, #F0D478 0%, #D4AD56 100%);
+  box-shadow: 0 8px 30px rgba(200, 155, 60, 0.35),
+              0 0 30px rgba(200, 155, 60, 0.12);
+}
+
+/* Secondary — White glass, gold border */
+[data-theme="light"] .btn--secondary {
+  background: rgba(255, 255, 255, 0.72);
+  color: #1E1E1E;
+  border: 1px solid rgba(200, 155, 60, 0.30);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-theme="light"] .btn--secondary:hover {
+  background: rgba(200, 155, 60, 0.10);
+  border-color: #C89B3C;
+  color: #A87A1E;
+  box-shadow: 0 4px 16px rgba(200, 155, 60, 0.12);
+}
+
+/* Ghost */
+[data-theme="light"] .btn--ghost {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .btn--ghost:hover {
+  color: #C89B3C;
+}
+
+/* Investment CTA */
+[data-theme="light"] .btn--investment {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%);
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .btn--investment:hover {
+  background: linear-gradient(135deg, #F0D478 0%, #D4AD56 100%);
+}
+
+/* Premium CTA */
+[data-theme="light"] .btn-premium-cta {
+  background: linear-gradient(135deg, #D4AD56, #A87A1E);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(200, 155, 60, 0.25);
+}
+
+[data-theme="light"] .btn-premium-cta:hover {
+  background: linear-gradient(135deg, #E7C564, #C89B3C);
+  box-shadow: 0 12px 36px rgba(200, 155, 60, 0.35);
+}
+
+/* Premium Gold Button */
+[data-theme="light"] .btn--premium-gold {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%);
+  color: #1E1E1E;
+  box-shadow: 0 6px 24px rgba(200, 155, 60, 0.20);
+}
+
+[data-theme="light"] .btn--premium-gold:hover {
+  background: linear-gradient(135deg, #F0D478 0%, #D4AD56 100%);
+  box-shadow: 0 12px 36px rgba(200, 155, 60, 0.35);
+}
+
+/* Premium Outline Button */
+[data-theme="light"] .btn--premium-outline {
+  color: #1E1E1E;
+  border: 1px solid rgba(200, 155, 60, 0.35);
+}
+
+[data-theme="light"] .btn--premium-outline:hover {
+  background: rgba(200, 155, 60, 0.08);
+  border-color: #C89B3C;
+}
+
+
+/* ==========================================================
+   CARDS — White Luxury
+   ========================================================== */
+
+[data-theme="light"] .card {
+  background: #FFFFFF;
+  border: 1px solid #E5DED2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .card:hover {
+  background: #FFFDF8;
+  border-color: rgba(200, 155, 60, 0.35);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08),
+              0 0 20px rgba(200, 155, 60, 0.06);
+  transform: translateY(-6px);
+}
+
+[data-theme="light"] .card--gradient {
+  background: linear-gradient(160deg,
+    rgba(200, 155, 60, 0.03) 0%,
+    transparent 50%,
+    rgba(200, 155, 60, 0.02) 100%
+  ), #FFFFFF;
+}
+
+[data-theme="light"] .card__image-overlay {
+  background: linear-gradient(180deg,
+    transparent 40%,
+    rgba(248, 246, 242, 0.6) 100%
+  );
+}
+
+[data-theme="light"] .card__icon {
+  background: rgba(200, 155, 60, 0.10);
+  color: #C89B3C;
+}
+
+[data-theme="light"] .card:hover .card__icon {
+  background: #C89B3C;
+  color: #FFFFFF;
+}
+
+
+/* ==========================================================
+   GLASSMORPHISM — White Glass
+   ========================================================== */
+
+[data-theme="light"] .glass {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(200, 155, 60, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .glass--heavy {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="light"] .glass--light {
+  background: rgba(255, 255, 255, 0.50);
+  border: 1px solid rgba(200, 155, 60, 0.12);
+}
+
+
+/* ==========================================================
+   FORM ELEMENTS — White Glass, Gold Focus
+   ========================================================== */
+
+[data-theme="light"] .form-input {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #E5DED2;
+  color: #1E1E1E;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .form-input:hover {
+  border-color: #D8CFC0;
+}
+
+[data-theme="light"] .form-input:focus {
+  border-color: #C89B3C;
+  box-shadow: 0 0 0 3px rgba(200, 155, 60, 0.12),
+              0 2px 8px rgba(0, 0, 0, 0.04);
+  background: #FFFFFF;
+}
+
+[data-theme="light"] .form-input::placeholder {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .form-icon {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .form-group:focus-within .form-icon {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .form-label {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .form-input:focus ~ .form-label,
+[data-theme="light"] .form-input:not(:placeholder-shown) ~ .form-label {
+  color: #A87A1E;
+  background: #FFFFFF;
+}
+
+
+/* ==========================================================
+   BADGES
+   ========================================================== */
+
+[data-theme="light"] .badge {
+  background: rgba(200, 155, 60, 0.10);
+  color: #A87A1E;
+  border: 1px solid rgba(200, 155, 60, 0.20);
+}
+
+[data-theme="light"] .badge--gold {
+  background: linear-gradient(135deg, #E7C564, #C89B3C);
+  color: #1E1E1E;
+}
+
+
+/* ==========================================================
+   HERO SECTION — Light
+   ========================================================== */
+
+[data-theme="light"] .hero__overlay {
+  background:
+    linear-gradient(180deg,
+      rgba(248, 246, 242, 0.10) 0%,
+      rgba(248, 246, 242, 0.00) 30%,
+      rgba(248, 246, 242, 0.30) 60%,
+      rgba(248, 246, 242, 0.85) 100%
+    ),
+    linear-gradient(90deg,
+      rgba(248, 246, 242, 0.35) 0%,
+      transparent 60%
+    );
+}
+
+[data-theme="light"] .hero__stat-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid rgba(200, 155, 60, 0.20);
+  border-top: 1px solid rgba(200, 155, 60, 0.30);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
+              0 1px 0 rgba(200, 155, 60, 0.08);
+}
+
+[data-theme="light"] .hero__trust-badge {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid rgba(200, 155, 60, 0.20);
+  border-top: 1px solid rgba(200, 155, 60, 0.30);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
+              0 1px 0 rgba(200, 155, 60, 0.08);
+}
+
+[data-theme="light"] .hero__stat-number {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .hero__stat-label {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .hero__trust-text {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .hero__trust-text strong {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .hero__trust-icon {
+  background: rgba(200, 155, 60, 0.12);
+  color: #C89B3C;
+}
+
+[data-theme="light"] .hero__scroll {
+  color: #8A8A8A;
+}
+
+
+/* ==========================================================
+   ABOUT SECTION — Light
+   ========================================================== */
+
+[data-theme="light"] .about-premium {
+  background: linear-gradient(180deg, #F8F6F2 0%, #F2EEE7 100%);
+}
+
+[data-theme="light"] .about-premium::before {
+  opacity: 0.03;
+}
+
+[data-theme="light"] .about-premium__glow {
+  background: radial-gradient(circle, rgba(200, 155, 60, 0.06) 0%, transparent 65%);
+}
+
+[data-theme="light"] .about-premium__heading {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .about-premium__quote {
+  background: rgba(255, 255, 255, 0.60);
+  color: #1E1E1E;
+  border-left: 3px solid #C89B3C;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .about-premium__text {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .about-premium__feature {
+  background: rgba(255, 255, 255, 0.70);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .about-premium__feature:hover {
+  border-color: rgba(200, 155, 60, 0.45);
+  box-shadow: 0 8px 24px rgba(200, 155, 60, 0.10);
+}
+
+[data-theme="light"] .about-premium__icon {
+  background: rgba(200, 155, 60, 0.10);
+  color: #C89B3C;
+}
+
+[data-theme="light"] .about-premium__f-text .hl-title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .about-premium__f-text .hl-desc {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .about__badge {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(200, 155, 60, 0.30);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .about__badge-label {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .about__image-frame {
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.10);
+}
+
+
+/* ==========================================================
+   WHY CHOOSE US — Light
+   ========================================================== */
+
+[data-theme="light"] #why-choose {
+  background-color: #F2EEE7;
+}
+
+[data-theme="light"] #why-choose::before {
+  background: radial-gradient(ellipse at 50% 5%, rgba(200, 155, 60, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 50% 50%, rgba(200, 155, 60, 0.03) 0%, transparent 60%),
+              radial-gradient(circle at center, transparent 40%, rgba(242, 238, 231, 0.5) 100%);
+}
+
+[data-theme="light"] #why-choose::after {
+  opacity: 0.08;
+}
+
+[data-theme="light"] .why-overline {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .why-overline-divider {
+  background: rgba(200, 155, 60, 0.50);
+  box-shadow: 0 0 8px rgba(200, 155, 60, 0.25);
+}
+
+[data-theme="light"] .text-white {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] #why-choose .why-subtitle {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .why__grid::after {
+  background: linear-gradient(90deg, transparent, rgba(200, 155, 60, 0.15), transparent);
+}
+
+[data-theme="light"] .why__grid > div::before {
+  background: radial-gradient(circle at center, rgba(200, 155, 60, 0.04), transparent 70%);
+}
+
+[data-theme="light"] .why-card {
+  background-color: rgba(255, 255, 255, 0.80);
+  background-image: linear-gradient(105deg, transparent 0%, transparent 45%, rgba(200, 155, 60, 0.04) 50%, transparent 55%, transparent 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04),
+              0 0 0 rgba(200, 155, 60, 0),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .why-card:hover {
+  background-color: rgba(255, 255, 255, 0.90);
+  background-image: radial-gradient(circle at center, rgba(200, 155, 60, 0.06) 0%, transparent 100%),
+                    linear-gradient(105deg, transparent 0%, transparent 45%, rgba(200, 155, 60, 0.08) 50%, transparent 55%, transparent 100%);
+  border-color: rgba(200, 155, 60, 0.40);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08),
+              0 0 24px rgba(200, 155, 60, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .why-card__number {
+  color: #A87A1E;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(200, 155, 60, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .why-card__icon {
+  background: rgba(200, 155, 60, 0.08);
+  border: 1px solid rgba(200, 155, 60, 0.25);
+  color: #C89B3C;
+  box-shadow: inset 0 0 15px rgba(200, 155, 60, 0.08);
+}
+
+[data-theme="light"] .why-card:hover .why-card__icon {
+  color: #FFFFFF;
+  background: rgba(200, 155, 60, 0.15);
+  border-color: rgba(200, 155, 60, 0.50);
+  box-shadow: 0 0 24px rgba(200, 155, 60, 0.20),
+              inset 0 0 20px rgba(200, 155, 60, 0.10);
+}
+
+[data-theme="light"] .why-card__icon::after {
+  background: linear-gradient(90deg, transparent, rgba(200, 155, 60, 0.30), transparent);
+}
+
+[data-theme="light"] .why-card__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .why-card__text {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   ACHIEVEMENTS — Light
+   ========================================================== */
+
+[data-theme="light"] .achievements {
+  background-color: #F8F6F2;
+}
+
+[data-theme="light"] .achievements::before {
+  background: radial-gradient(ellipse at 50% 15%, rgba(200, 155, 60, 0.08) 0%, transparent 60%),
+              radial-gradient(circle at center, transparent 30%, rgba(248, 246, 242, 0.6) 100%);
+}
+
+[data-theme="light"] .achievements::after {
+  opacity: 0.05;
+}
+
+[data-theme="light"] .achievements .container::before {
+  background: rgba(200, 155, 60, 0.4);
+  box-shadow: 200px 100px 0 rgba(200, 155, 60, 0.2),
+              -150px 250px 0 rgba(200, 155, 60, 0.3),
+              350px -100px 0 rgba(200, 155, 60, 0.15),
+              -250px -200px 0 rgba(200, 155, 60, 0.25),
+              450px 300px 0 rgba(200, 155, 60, 0.2),
+              -300px 50px 0 rgba(200, 155, 60, 0.3),
+              100px 400px 0 rgba(200, 155, 60, 0.2),
+              -100px -300px 0 rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .achievements-overline {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .achievements-heading {
+  color: #1E1E1E;
+  text-shadow: none;
+}
+
+[data-theme="light"] .achievements .section-header::after {
+  border-top-color: rgba(200, 155, 60, 0.30);
+  border-left-color: rgba(200, 155, 60, 0.30);
+}
+
+[data-theme="light"] .achievements .section-header > div:last-child::after {
+  border-bottom-color: rgba(200, 155, 60, 0.30);
+  border-right-color: rgba(200, 155, 60, 0.30);
+}
+
+[data-theme="light"] .achievements-divider {
+  background: linear-gradient(90deg, transparent, rgba(200, 155, 60, 0.60), transparent);
+  box-shadow: 0 0 8px rgba(200, 155, 60, 0.30);
+}
+
+[data-theme="light"] .achievement-card {
+  background-color: rgba(255, 255, 255, 0.80);
+  background-image: linear-gradient(105deg, transparent 0%, transparent 45%, rgba(200, 155, 60, 0.04) 50%, transparent 55%, transparent 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8),
+              inset 0 0 0 rgba(200, 155, 60, 0);
+}
+
+[data-theme="light"] .achievement-card:hover {
+  border-color: rgba(200, 155, 60, 0.40);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08),
+              0 0 24px rgba(200, 155, 60, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9),
+              inset 0 0 16px rgba(200, 155, 60, 0.04);
+}
+
+[data-theme="light"] .achievement-card__icon {
+  background: rgba(200, 155, 60, 0.08);
+  border: 1px solid rgba(200, 155, 60, 0.25);
+  color: #C89B3C;
+  box-shadow: inset 0 0 15px rgba(200, 155, 60, 0.08);
+}
+
+[data-theme="light"] .achievement-card:hover .achievement-card__icon {
+  color: #FFFFFF;
+  border-color: rgba(200, 155, 60, 0.50);
+  box-shadow: 0 0 30px rgba(200, 155, 60, 0.25),
+              inset 0 0 20px rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .achievement-card__label {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   SERVICES SECTION — Light
+   ========================================================== */
+
+[data-theme="light"] .section--services {
+  background: linear-gradient(180deg, #F2EEE7 0%, #F8F6F2 100%);
+}
+
+[data-theme="light"] .section__overline {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .section__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .section__desc {
+  color: #5A5A5A;
+}
+
+/* Service Cards */
+[data-theme="light"] .service-card {
+  background: rgba(255, 255, 255, 0.80);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .service-card:hover {
+  border-color: rgba(200, 155, 60, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06),
+              0 0 16px rgba(200, 155, 60, 0.06);
+}
+
+[data-theme="light"] .service-card__icon {
+  color: #C89B3C;
+  background: rgba(200, 155, 60, 0.08);
+}
+
+[data-theme="light"] .service-card__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .service-card__desc {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   AMENITIES SECTION — Light
+   ========================================================== */
+
+[data-theme="light"] .section--amenities {
+  background: linear-gradient(180deg, #F8F6F2 0%, #F2EEE7 100%);
+}
+
+[data-theme="light"] .amenity-card__overlay {
+  background: linear-gradient(180deg, transparent 30%, rgba(30, 30, 30, 0.85) 100%);
+}
+
+
+/* ==========================================================
+   INVESTMENT SECTION — Light
+   ========================================================== */
+
+[data-theme="light"] .section--investment {
+  background: linear-gradient(180deg, #F2EEE7 0%, #F8F6F2 100%);
+}
+
+[data-theme="light"] .investment__content-card {
+  background: rgba(255, 255, 255, 0.80);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .investment__glow-bg {
+  background: radial-gradient(circle, rgba(200, 155, 60, 0.06) 0%, transparent 70%);
+}
+
+[data-theme="light"] .investment__feature-icon {
+  color: #C89B3C;
+  background: rgba(200, 155, 60, 0.08);
+}
+
+[data-theme="light"] .investment__feature-text h4 {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .investment__feature-text p {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .investment__badge {
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(200, 155, 60, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .investment__badge-val {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .investment__badge-lbl {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   FOOTER — Luxury Cream
+   ========================================================== */
+
+[data-theme="light"] .footer-luxury {
+  background-color: #EDE8DF;
+  border-top: 1px solid rgba(200, 155, 60, 0.20);
+}
+
+[data-theme="light"] .footer-luxury__bg {
+  background-image:
+    radial-gradient(circle at bottom center, rgba(200, 155, 60, 0.04) 0%, transparent 60%),
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+}
+
+[data-theme="light"] .footer-heading,
+[data-theme="light"] .footer-luxury__heading {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-desc,
+[data-theme="light"] .footer-luxury__brand-desc,
+[data-theme="light"] .footer-luxury__text {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer-links a,
+[data-theme="light"] .footer-luxury__links a {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer-links a:hover,
+[data-theme="light"] .footer-luxury__links a:hover {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .footer-contact-item p,
+[data-theme="light"] .footer-contact-item a,
+[data-theme="light"] .footer-luxury__contact-item p,
+[data-theme="light"] .footer-luxury__contact-item a {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer-contact-item a:hover,
+[data-theme="light"] .footer-luxury__contact-item a:hover {
+  color: #C89B3C;
+}
+
+/* Social icons */
+[data-theme="light"] .social-glass,
+[data-theme="light"] .social-icon-gold {
+  color: #5A5A5A;
+  border-color: #E5DED2;
+  background: rgba(255, 255, 255, 0.50);
+}
+
+[data-theme="light"] .social-glass:hover,
+[data-theme="light"] .social-icon-gold:hover {
+  color: #FFFFFF;
+  background: #C89B3C;
+  border-color: #C89B3C;
+  box-shadow: 0 6px 20px rgba(200, 155, 60, 0.25);
+}
+
+/* Newsletter form */
+[data-theme="light"] .footer-newsletter-form,
+[data-theme="light"] .glass-input-group,
+[data-theme="light"] .input-glass-wrapper {
+  background: rgba(255, 255, 255, 0.60);
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .footer-newsletter-form:focus-within,
+[data-theme="light"] .glass-input-group:focus-within,
+[data-theme="light"] .input-glass-wrapper:focus-within {
+  border-color: #C89B3C;
+  box-shadow: 0 0 16px rgba(200, 155, 60, 0.12);
+  background: rgba(255, 255, 255, 0.80);
+}
+
+[data-theme="light"] .footer-input-glass,
+[data-theme="light"] .input-glass {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-input-glass::placeholder,
+[data-theme="light"] .input-glass::placeholder {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer-btn-glass,
+[data-theme="light"] .btn-glass-submit {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%);
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-privacy,
+[data-theme="light"] .footer-luxury__privacy-text {
+  color: #8A8A8A;
+}
+
+/* Footer bottom */
+[data-theme="light"] .footer-bottom,
+[data-theme="light"] .footer-luxury__bottom {
+  border-top: 1px solid rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .footer-copyright,
+[data-theme="light"] .footer-luxury__copyright {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer-legal a,
+[data-theme="light"] .footer-luxury__legal a {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer-legal a:hover,
+[data-theme="light"] .footer-luxury__legal a:hover {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .gold-divider,
+[data-theme="light"] .vertical-divider {
+  background-color: rgba(200, 155, 60, 0.20);
+}
+
+/* Developer credit */
+[data-theme="light"] .developer-credit {
+  color: #8A8A8A;
+  border-top: 1px solid rgba(200, 155, 60, 0.12);
+}
+
+[data-theme="light"] .developer-credit a {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .developer-credit a:hover {
+  color: #C89B3C;
+  text-shadow: none;
+}
+
+[data-theme="light"] .developer-credit a::after {
+  background-color: #C89B3C;
+}
+
+[data-theme="light"] .developer-credit a:hover::after {
+  background-color: #C89B3C;
+}
+
+
+/* ==========================================================
+   CONTACT ICON GLASS
+   ========================================================== */
+
+[data-theme="light"] .contact-icon-glass {
+  background: rgba(200, 155, 60, 0.08);
+  color: #C89B3C;
+  border-color: rgba(200, 155, 60, 0.20);
+}
+
+
+/* ==========================================================
+   PROJECT CARDS — Light
+   ========================================================== */
+
+[data-theme="light"] .project-card {
+  background: #FFFFFF;
+  border: 1px solid #E5DED2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .project-card:hover {
+  border-color: rgba(200, 155, 60, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08),
+              0 0 16px rgba(200, 155, 60, 0.06);
+}
+
+/* Status Badges */
+[data-theme="light"] .status-badge--completed,
+[data-theme="light"] .badge--completed {
+  background: rgba(106, 27, 43, 0.12);
+  color: #6A1B2B;
+  border-color: rgba(106, 27, 43, 0.25);
+}
+
+[data-theme="light"] .status-badge--ongoing,
+[data-theme="light"] .badge--ongoing {
+  background: rgba(21, 114, 71, 0.12);
+  color: #157247;
+  border-color: rgba(21, 114, 71, 0.25);
+}
+
+[data-theme="light"] .status-badge--upcoming,
+[data-theme="light"] .badge--upcoming {
+  background: rgba(140, 107, 46, 0.12);
+  color: #8C6B2E;
+  border-color: rgba(140, 107, 46, 0.25);
+}
+
+
+/* ==========================================================
+   SECTION ALT — Light
+   ========================================================== */
+
+[data-theme="light"] .section--alt {
+  background: #F2EEE7;
+}
+
+
+/* ==========================================================
+   GEOMETRIC BACKGROUND SHAPES — Light (dimmer)
+   ========================================================== */
+
+[data-theme="light"] #bg-shapes {
+  opacity: 0.25;
+}
+
+[data-theme="light"] .bg-shape svg {
+  color: rgba(200, 155, 60, 0.15);
+}
+
+
+/* ==========================================================
+   GLOBAL PARTICLES — Dimmer on light
+   ========================================================== */
+
+[data-theme="light"] #global-particles {
+  opacity: 0.25;
+}
+
+
+/* ==========================================================
+   PRE-FOOTER CTA — Light
+   ========================================================== */
+
+[data-theme="light"] .pre-footer-cta {
+  background-color: #F8F6F2;
+}
+
+[data-theme="light"] .pre-footer-cta__bg {
+  background: radial-gradient(circle at center, rgba(200, 155, 60, 0.06) 0%, rgba(248, 246, 242, 1) 60%);
+  border: 1px solid rgba(200, 155, 60, 0.10);
+}
+
+[data-theme="light"] .pre-footer-cta__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .pre-footer-cta__desc {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   TYPOGRAPHY UTILITY OVERRIDES — Light
+   ========================================================== */
+
+[data-theme="light"] .text-gold {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .text-muted {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .text-subtle {
+  color: #8A8A8A;
+}
+
+
+/* ==========================================================
+   DIVIDERS — Light
+   ========================================================== */
+
+[data-theme="light"] .divider {
+  background: #E5DED2;
+}
+
+[data-theme="light"] .divider--gold {
+  background: linear-gradient(90deg,
+    transparent,
+    #C89B3C,
+    transparent
+  );
+}
+
+[data-theme="light"] .gold-line {
+  background: linear-gradient(135deg, #E7C564, #C89B3C);
+}
+
+[data-theme="light"] .overline {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .overline::before {
+  background: #C89B3C;
+}
+
+
+/* ==========================================================
+   PAGE HEADER / BANNER — Light (for sub-pages)
+   ========================================================== */
+
+[data-theme="light"] .page-header,
+[data-theme="light"] .page-banner {
+  background: linear-gradient(180deg, #F2EEE7 0%, #F8F6F2 100%);
+}
+
+[data-theme="light"] .page-header__title,
+[data-theme="light"] .page-banner__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .page-header__desc,
+[data-theme="light"] .page-banner__desc {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   TESTIMONIAL CARDS — Light
+   ========================================================== */
+
+[data-theme="light"] .testimonial-card {
+  background: rgba(255, 255, 255, 0.80);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .testimonial-card:hover {
+  border-color: rgba(200, 155, 60, 0.30);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .testimonial-card__text {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .testimonial-card__name {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .testimonial-card__role {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .testimonial-card__stars {
+  color: #C89B3C;
+}
+
+
+/* ==========================================================
+   CONTACT FORM SECTION — Light
+   ========================================================== */
+
+[data-theme="light"] .contact-form-wrapper,
+[data-theme="light"] .contact-card {
+  background: rgba(255, 255, 255, 0.80);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .contact-info-card {
+  background: rgba(255, 255, 255, 0.60);
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .contact-info-card:hover {
+  border-color: rgba(200, 155, 60, 0.30);
+}
+
+
+/* ==========================================================
+   SERVICES SECTION — Hardcoded dark overrides
+   ========================================================== */
+
+[data-theme="light"] .section--services {
+  background: linear-gradient(180deg, #F2EEE7 0%, #F8F6F2 50%, #F2EEE7 100%);
+}
+
+[data-theme="light"] .section--services::before {
+  opacity: 0.02;
+}
+
+[data-theme="light"] .section--services::after {
+  background: radial-gradient(ellipse at center, rgba(200, 155, 60, 0.04) 0%, transparent 70%);
+}
+
+[data-theme="light"] .section--services .section__overline {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .section--services .section__overline::after {
+  background: #C89B3C;
+}
+
+[data-theme="light"] .section--services .section__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .section--services .section__desc {
+  color: #5A5A5A;
+}
+
+/* Service Card */
+[data-theme="light"] .service-card {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .service-card::before {
+  background: linear-gradient(to right, transparent, rgba(200, 155, 60, 0.08), transparent);
+}
+
+[data-theme="light"] .service-card:hover {
+  border-color: rgba(200, 155, 60, 0.40);
+  box-shadow: 0 0 24px rgba(200, 155, 60, 0.08),
+              0 16px 48px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .service-card__icon {
+  background: rgba(200, 155, 60, 0.08);
+  color: #C89B3C;
+  border: 1px solid rgba(200, 155, 60, 0.20);
+  box-shadow: inset 0 0 15px rgba(200, 155, 60, 0.06),
+              0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .service-card:hover .service-card__icon {
+  box-shadow: inset 0 0 20px rgba(200, 155, 60, 0.12),
+              0 0 16px rgba(200, 155, 60, 0.15);
+  color: #A87A1E;
+  background: rgba(200, 155, 60, 0.12);
+}
+
+[data-theme="light"] .service-card__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .service-card__desc {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .service-card:hover .service-card__desc {
+  color: #1E1E1E;
+}
+
+/* Service Card Lux (services page) */
+[data-theme="light"] .service-card-lux {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #E5DED2;
+  box-shadow: inset 0 1px 0 rgba(200, 155, 60, 0.10),
+              0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .service-card-lux:hover {
+  border-color: rgba(200, 155, 60, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06),
+              inset 0 1px 0 rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .service-card-lux__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .service-card-lux:hover .service-card-lux__title {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .service-card-lux__desc {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .service-card-lux__btn {
+  color: #A87A1E;
+  border: 1px solid rgba(200, 155, 60, 0.30);
+}
+
+[data-theme="light"] .service-card-lux:hover .service-card-lux__btn {
+  background-color: #C89B3C;
+  color: #FFFFFF;
+}
+
+/* Services grid particles dimmer */
+[data-theme="light"] .services-grid::before {
+  background: radial-gradient(circle, rgba(200, 155, 60, 0.02) 0%, transparent 60%);
+}
+
+[data-theme="light"] .services-grid::after {
+  opacity: 0.3;
+}
+
+
+/* ==========================================================
+   AMENITIES SECTION — Hardcoded dark overrides
+   ========================================================== */
+
+[data-theme="light"] .section--amenities {
+  background: linear-gradient(180deg, #F8F6F2 0%, #F2EEE7 50%, #EDE8DF 100%);
+}
+
+[data-theme="light"] .section--amenities::before {
+  opacity: 0.02;
+}
+
+[data-theme="light"] .section--amenities::after {
+  background: radial-gradient(ellipse at center, rgba(200, 155, 60, 0.03) 0%, transparent 70%);
+}
+
+[data-theme="light"] .section--amenities .section__overline {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .section--amenities .section__overline::after {
+  background: #C89B3C;
+}
+
+[data-theme="light"] .section--amenities .section__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .section--amenities .section__desc {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .amenity-card {
+  border: 1px solid #E5DED2;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .amenity-card:hover {
+  border-color: rgba(200, 155, 60, 0.40);
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.08),
+              0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .amenities-grid::before {
+  opacity: 0.3;
+}
+
+
+/* ==========================================================
+   INVESTMENT SECTION — Hardcoded dark overrides
+   ========================================================== */
+
+[data-theme="light"] .section--investment {
+  background: linear-gradient(180deg, #EDE8DF 0%, #F2EEE7 50%, #F8F6F2 100%);
+}
+
+[data-theme="light"] .section--investment::before {
+  background: radial-gradient(ellipse at 30% 50%, rgba(200, 155, 60, 0.05) 0%, transparent 70%),
+              radial-gradient(circle at 100% 0%, rgba(248, 246, 242, 0.3) 0%, transparent 60%);
+}
+
+[data-theme="light"] .section--investment::after {
+  opacity: 0.3;
+}
+
+[data-theme="light"] .investment__content-card {
+  background: rgba(255, 255, 255, 0.80) !important;
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .investment__card-inner {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .investment__card-inner .section__overline {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .investment__card-inner .section__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .investment__card-inner .section__desc {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .investment__img-overlay {
+  background: linear-gradient(90deg, rgba(248, 246, 242, 0.25), transparent);
+}
+
+[data-theme="light"] .investment__feature-row {
+  border-bottom-color: #E5DED2;
+}
+
+
+/* ==========================================================
+   PROJECT CARD STATUS — Light Overrides
+   ========================================================== */
+
+[data-theme="light"] .project-card__status {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #1E1E1E;
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .project-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================================
+   ABOUT-LUXURY.CSS OVERRIDES — Light
+   ========================================================== */
+
+[data-theme="light"] .about-luxury,
+[data-theme="light"] .about-luxury-section {
+  background: linear-gradient(180deg, #F8F6F2 0%, #F2EEE7 100%);
+}
+
+
+/* ==========================================================
+   BACKGROUND SHAPES — Light
+   ========================================================== */
+
+[data-theme="light"] .bg-shape {
+  color: rgba(200, 155, 60, 0.06) !important;
+}
+
+
+/* ==========================================================
+   FOCUS VISIBLE — Light
+   ========================================================== */
+
+[data-theme="light"] :focus-visible {
+  outline-color: #C89B3C;
+}
+
+
+/* ==========================================================
+   FLOATING CARDS ANIMATION
+   ========================================================== */
+
+[data-theme="light"] .hero__stat-card,
+[data-theme="light"] .hero__trust-badge {
+  animation-name: floatCard;
+}
+
+
+/* ==========================================================
+   PAGE HERO — Sub-page dark overlays → Light
+   ========================================================== */
+
+[data-theme="light"] .page-hero__bg::after {
+  background: rgba(248, 246, 242, 0.70);
+}
+
+[data-theme="light"] .page-hero__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .page-hero__subtitle {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .badge-large {
+  background: rgba(200, 155, 60, 0.10);
+  border: 1px solid rgba(200, 155, 60, 0.25);
+  color: #A87A1E;
+}
+
+/* About page hero */
+[data-theme="light"] .page-hero--about .page-hero__overlay {
+  background: linear-gradient(to top, rgba(248, 246, 242, 0.95) 0%, rgba(248, 246, 242, 0.4) 50%, rgba(248, 246, 242, 0.6) 100%);
+}
+
+[data-theme="light"] .page-hero--about .page-hero__subtitle {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .page-hero--about .page-hero__title {
+  color: #1E1E1E;
+}
+
+
+/* ==========================================================
+   LUXURY SECTION — about-luxury.css overrides
+   ========================================================== */
+
+[data-theme="light"] .luxury-section {
+  background-color: #F8F6F2;
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .luxury-section::before {
+  background: radial-gradient(ellipse at 50% 15%, rgba(200, 155, 60, 0.06) 0%, transparent 60%),
+              radial-gradient(circle at center, transparent 30%, rgba(248, 246, 242, 0.6) 100%);
+}
+
+[data-theme="light"] .luxury-section::after {
+  opacity: 0.04;
+}
+
+[data-theme="light"] .luxury-eyebrow {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .luxury-glass-card {
+  background: rgba(255, 255, 255, 0.80);
+  border: 1px solid #E5DED2;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .hover-lift-luxury:hover {
+  border-color: rgba(200, 155, 60, 0.40);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08), 0 0 20px rgba(200, 155, 60, 0.06);
+  background: rgba(255, 255, 255, 0.90);
+}
+
+[data-theme="light"] .luxury-icon-circle {
+  background: rgba(200, 155, 60, 0.08);
+  border: 1px solid rgba(200, 155, 60, 0.25);
+}
+
+[data-theme="light"] .hover-lift-luxury:hover .luxury-icon-circle {
+  background: rgba(200, 155, 60, 0.15);
+  box-shadow: 0 0 16px rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .luxury-quote {
+  color: #1E1E1E;
+  border-left: 4px solid #C89B3C;
+}
+
+[data-theme="light"] .luxury-image-frame {
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.10);
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .mouse-light {
+  background: radial-gradient(circle, rgba(200, 155, 60, 0.06) 0%, transparent 70%);
+}
+
+
+/* ==========================================================
+   TIMELINE — Light
+   ========================================================== */
+
+[data-theme="light"] .timeline-content {
+  background: rgba(255, 255, 255, 0.80);
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .timeline-item:hover .timeline-content {
+  border-color: rgba(200, 155, 60, 0.40);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .timeline-dot {
+  background: #F8F6F2;
+  border: 4px solid #C89B3C;
+  box-shadow: 0 0 12px rgba(200, 155, 60, 0.30);
+}
+
+[data-theme="light"] .timeline-item:hover .timeline-dot {
+  background: #C89B3C;
+}
+
+[data-theme="light"] .timeline-title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .timeline-desc {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   MV CARD (Mission/Vision) — Light
+   ========================================================== */
+
+[data-theme="light"] .mv-card__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .chairman__name {
+  color: #1E1E1E;
+}
+
+
+/* ==========================================================
+   PROJECT CARDS — Hardcoded #fff overrides
+   ========================================================== */
+
+[data-theme="light"] .project-card__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .project-card__badge {
+  background: rgba(255, 255, 255, 0.85);
+  color: #A87A1E;
+}
+
+
+/* ==========================================================
+   FILTER TABS — Light
+   ========================================================== */
+
+[data-theme="light"] .filter-tab {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E5DED2;
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .filter-tab:hover {
+  border-color: #C89B3C;
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .filter-tab.active {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%);
+  color: #1E1E1E;
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(200, 155, 60, 0.25);
+}
+
+
+/* ==========================================================
+   PROGRESS BAR — Light
+   ========================================================== */
+
+[data-theme="light"] .progress-bar-wrap {
+  background: rgba(200, 155, 60, 0.10);
+}
+
+
+/* ==========================================================
+   IMAGE PLACEHOLDER FALLBACK — Light
+   ========================================================== */
+
+[data-theme="light"] .image-placeholder {
+  background: linear-gradient(135deg, #F2EEE7, #EDE8DF) !important;
+}
+
+
+/* ==========================================================
+   FOOTER (.footer from sections.css) — Light
+   ========================================================== */
+
+[data-theme="light"] .footer {
+  background: #EDE8DF;
+  background-image: radial-gradient(circle at center top, rgba(200, 155, 60, 0.04) 0%, rgba(237, 232, 223, 1) 70%);
+}
+
+[data-theme="light"] .footer__heading {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer__desc {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer__text {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer__links a {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer__links a:hover {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .footer__contact-item p {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer__socials a {
+  background: rgba(255, 255, 255, 0.50);
+  border: 1px solid #E5DED2;
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer__socials a:hover {
+  background: rgba(200, 155, 60, 0.10);
+  border-color: #C89B3C;
+  color: #C89B3C;
+}
+
+[data-theme="light"] .footer__form input {
+  background: rgba(255, 255, 255, 0.60);
+  border: 1px solid #E5DED2;
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer__form input::placeholder {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer__form input:focus {
+  border-color: #C89B3C;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="light"] .footer__divider {
+  background: rgba(200, 155, 60, 0.20);
+}
+
+[data-theme="light"] .footer__copyright {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer__legal li:not(:last-child)::after {
+  background: rgba(200, 155, 60, 0.20);
+}
+
+[data-theme="light"] .footer__legal a {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer__legal a:hover {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .footer__btn-brochure {
+  color: #A87A1E;
+  border-color: #C89B3C;
+}
+
+[data-theme="light"] .footer__btn-brochure:hover {
+  background: #C89B3C;
+  color: #FFFFFF;
+}
+
+
+/* ==========================================================
+   FOOTER-LUXURY.CSS — Light (the standalone footer component)
+   ========================================================== */
+
+[data-theme="light"] .footer-luxury {
+  background-color: #EDE8DF;
+  border-top: 1px solid rgba(200, 155, 60, 0.20);
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-luxury__bg {
+  background-image:
+    radial-gradient(circle at bottom center, rgba(200, 155, 60, 0.04) 0%, transparent 60%),
+    linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+}
+
+[data-theme="light"] .footer-luxury__gradient {
+  background: radial-gradient(circle at bottom right, rgba(200, 155, 60, 0.06) 0%, transparent 60%);
+}
+
+[data-theme="light"] .social-icon-gold {
+  color: #5A5A5A;
+  border-color: #E5DED2;
+  background: rgba(255, 255, 255, 0.50);
+}
+
+[data-theme="light"] .social-icon-gold:hover {
+  color: #FFFFFF;
+  background: #C89B3C;
+  border-color: #C89B3C;
+}
+
+[data-theme="light"] .hover-underline {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .hover-underline:hover {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-luxury__copyright {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer-luxury__legal a {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer-luxury__legal a:hover {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .footer-luxury__bottom {
+  border-top: 1px solid rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .footer-luxury__privacy-text {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .input-glass-wrapper {
+  background: rgba(255, 255, 255, 0.60);
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .input-glass-wrapper:focus-within {
+  border-color: #C89B3C;
+  background: rgba(255, 255, 255, 0.80);
+  box-shadow: 0 0 16px rgba(200, 155, 60, 0.12);
+}
+
+[data-theme="light"] .input-glass {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .input-glass::placeholder {
+  color: #8A8A8A;
+}
+
+
+/* ==========================================================
+   ABOUT-LUXURY.CSS FOOTER — Light
+   ========================================================== */
+
+[data-theme="light"] .social-glass {
+  color: #5A5A5A;
+  border-color: #E5DED2;
+  background: rgba(255, 255, 255, 0.50);
+}
+
+[data-theme="light"] .social-glass:hover {
+  background: #C89B3C;
+  color: #FFFFFF;
+}
+
+[data-theme="light"] .footer-input-glass {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-input-glass::placeholder {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .glass-input-group {
+  background: rgba(255, 255, 255, 0.60);
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .glass-input-group:focus-within {
+  border-color: #C89B3C;
+  box-shadow: 0 0 16px rgba(200, 155, 60, 0.12);
+}
+
+[data-theme="light"] .footer-btn-glass {
+  background: linear-gradient(135deg, #E7C564, #C89B3C);
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-copyright {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer-bottom {
+  border-top: 1px solid rgba(200, 155, 60, 0.15);
+}
+
+
+/* ==========================================================
+   PRE-FOOTER CTA — Light (footer-luxury.css)
+   ========================================================== */
+
+[data-theme="light"] .pre-footer-cta {
+  background-color: #F8F6F2;
+}
+
+[data-theme="light"] .pre-footer-cta__bg {
+  background: radial-gradient(circle at center, rgba(200, 155, 60, 0.06) 0%, rgba(248, 246, 242, 1) 60%);
+  border: 1px solid rgba(200, 155, 60, 0.10);
+}
+
+
+/* ==========================================================
+   CONTACT FORM — Light
+   ========================================================== */
+
+[data-theme="light"] .contact__form-wrapper {
+  background: #FFFFFF;
+  border: 1px solid #E5DED2;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .form__input {
+  color: #1E1E1E;
+  border-bottom: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .form__input:focus {
+  border-bottom-color: #C89B3C;
+}
+
+
+/* ==========================================================
+   TESTIMONIAL CARD — Author #fff override
+   ========================================================== */
+
+[data-theme="light"] .testimonial-card__author h4 {
+  color: #1E1E1E;
+}
+
+
+/* ==========================================================
+   GLOBAL HARDCODED #fff TEXT COLORS — Light Overrides
+   These are scattered across sections.css with inline #fff
+   ========================================================== */
+
+/* Section headings with hardcoded white */
+[data-theme="light"] .section--services .text-gradient,
+[data-theme="light"] .section--amenities .text-gradient {
+  background: linear-gradient(90deg, #A87A1E, #C89B3C, #8C6B2E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Amenity card (image-based, keep overlay darker for contrast) */
+
+/* Service card text — hardcoded */
+[data-theme="light"] .service-card:hover .service-card__desc {
+  color: #1E1E1E;
+}
+
+/* Investment section — hardcoded #fff text */
+[data-theme="light"] .investment__content .section__title,
+[data-theme="light"] .investment__content h2,
+[data-theme="light"] .investment__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .investment__content .section__desc,
+[data-theme="light"] .investment__desc {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   HERO SECTION TITLE — Ensure readability on light
+   ========================================================== */
+
+[data-theme="light"] .hero__title {
+  color: #1E1E1E;
+  text-shadow: none;
+}
+
+[data-theme="light"] .hero__subtitle {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .hero__headline {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   METALLIC GOLD TEXT — Adjusted for light backgrounds
+   ========================================================== */
+
+[data-theme="light"] .text-metallic-gold {
+  background: linear-gradient(90deg, #C89B3C 0%, #A87A1E 18%, #8C6B2E 40%, #C89B3C 60%, #A87A1E 82%, #C89B3C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .text-metallic-gold::after {
+  text-shadow: 0 0 15px rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .text-trust-gold {
+  background: linear-gradient(90deg, #1E1E1E 0%, #A87A1E 50%, #C89B3C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Floating particles in sections — dimmer on light */
+[data-theme="light"] #why-choose .container::before {
+  opacity: 0.3;
+}
+
+[data-theme="light"] .achievements .container::before {
+  opacity: 0.25;
+}
+
+
+/* ==========================================================
+   SECTIONS.CSS FOOTER — Light Overrides
+   Targets hardcoded dark colors in the <footer> element
+   defined in sections.css (Ultra Luxury Footer)
+   ========================================================== */
+
+[data-theme="light"] footer {
+  background: linear-gradient(180deg, #F2EEE7 0%, #EDE8DF 100%);
+  border-top: 1px solid rgba(200, 155, 60, 0.20);
+}
+
+[data-theme="light"] footer::before {
+  background-image:
+    radial-gradient(ellipse at top center, rgba(200, 155, 60, 0.04) 0%, transparent 70%);
+  opacity: 1;
+}
+
+/* Footer descriptions */
+[data-theme="light"] .footer-desc {
+  color: #5A5A5A;
+}
+
+/* Footer social icons */
+[data-theme="light"] .footer-socials a {
+  background: rgba(255, 255, 255, 0.50);
+  border-color: #E5DED2;
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer-socials a:hover {
+  background: #C89B3C;
+  color: #FFFFFF;
+  border-color: #C89B3C;
+  box-shadow: 0 8px 25px rgba(200, 155, 60, 0.25);
+}
+
+[data-theme="light"] .footer-socials a i {
+  color: #A87A1E !important;
+  stroke: #A87A1E !important;
+}
+
+[data-theme="light"] .footer-socials a:hover i {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Footer headings */
+[data-theme="light"] .footer-heading {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-heading::after {
+  background: #C89B3C;
+}
+
+/* Footer links */
+[data-theme="light"] .footer-links a {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer-links a:hover {
+  color: #C89B3C;
+}
+
+/* Footer contact items */
+[data-theme="light"] .footer-contact-item i,
+[data-theme="light"] .footer-contact-item svg {
+  color: #C89B3C !important;
+  stroke: #C89B3C !important;
+}
+
+[data-theme="light"] .footer-contact-text p,
+[data-theme="light"] .footer-contact-item > p,
+[data-theme="light"] .footer-contact-item a {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .footer-contact-item a:hover {
+  color: #C89B3C;
+}
+
+/* Footer newsletter form */
+[data-theme="light"] .footer-newsletter-form {
+  background: rgba(255, 255, 255, 0.60);
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .footer-newsletter-form:focus-within {
+  border-color: #C89B3C;
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.12);
+  background: rgba(255, 255, 255, 0.80);
+}
+
+[data-theme="light"] .footer-input {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-input::placeholder {
+  color: #8A8A8A;
+}
+
+/* Footer submit button */
+[data-theme="light"] .footer-btn-submit {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%);
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .footer-btn-submit:hover {
+  background: linear-gradient(135deg, #F0D478 0%, #D4AD56 100%);
+}
+
+/* Footer privacy text */
+[data-theme="light"] .footer-privacy {
+  color: #8A8A8A;
+}
+
+/* Footer bottom bar */
+[data-theme="light"] .footer-bottom {
+  border-top: 1px solid rgba(200, 155, 60, 0.15);
+}
+
+[data-theme="light"] .footer-copyright {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer-ornament {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .footer-legal a {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .footer-legal a:hover {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .gold-divider {
+  background-color: rgba(200, 155, 60, 0.30);
+}
+
+
+/* ==========================================================
+   LUXURY CTA — Light
+   ========================================================== */
+
+[data-theme="light"] .luxury-cta {
+  background: linear-gradient(to bottom, #F8F6F2, #F2EEE7);
+}
+
+[data-theme="light"] .luxury-cta__bg {
+  background: radial-gradient(circle at center, rgba(200, 155, 60, 0.06) 0%, transparent 65%);
+}
+
+[data-theme="light"] .luxury-cta__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .luxury-cta__desc {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   FILTER TABS — Hardcoded Dark Overrides
+   ========================================================== */
+
+[data-theme="light"] .filter-tab {
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid #E5DED2;
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .filter-tab:hover {
+  border-color: #C89B3C;
+  color: #1E1E1E;
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .filter-tab.active {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%);
+  color: #1E1E1E;
+  border-color: transparent;
+  box-shadow: 0 6px 20px rgba(200, 155, 60, 0.25);
+}
+
+
+/* ==========================================================
+   PROJECT CARD — Hardcoded #fff & dark bg Overrides
+   ========================================================== */
+
+[data-theme="light"] .project-card {
+  background: #FFFFFF;
+  border: 1px solid #E5DED2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .project-card:hover {
+  border-color: rgba(200, 155, 60, 0.35);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .project-card__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .project-card__location {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .project-card__desc {
+  color: #5A5A5A;
+}
+
+[data-theme="light"] .project-card__badge {
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #A87A1E;
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .project-card__badge.badge--completed {
+  color: #157247;
+}
+
+[data-theme="light"] .project-card .spec-label {
+  color: #8A8A8A;
+}
+
+[data-theme="light"] .project-card .spec-value {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .project-card__specs {
+  border-top: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .project-card__btn {
+  color: #A87A1E;
+}
+
+[data-theme="light"] .project-card__btn:hover {
+  color: #C89B3C;
+}
+
+[data-theme="light"] .project-card__status {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #1E1E1E;
+  border: 1px solid #E5DED2;
+}
+
+
+/* ==========================================================
+   PROJECT DETAIL — Light
+   ========================================================== */
+
+[data-theme="light"] .quick-info-item {
+  border-right-color: #E5DED2;
+}
+
+[data-theme="light"] .quick-info-value {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .quick-info-label {
+  color: #8A8A8A;
+}
+
+
+/* ==========================================================
+   TEASER ITEMS — Light
+   ========================================================== */
+
+[data-theme="light"] .teaser-item h4 {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .teaser-item p {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   SECTION--PROJECTS BACKGROUND — Light
+   ========================================================== */
+
+[data-theme="light"] .section--projects {
+  background: linear-gradient(180deg, #F8F6F2 0%, #F2EEE7 100%);
+}
+
+
+/* ==========================================================
+   MV CARD & CHAIRMAN — Hardcoded #fff → Light
+   ========================================================== */
+
+[data-theme="light"] .mv-card__title {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .mv-card {
+  background: #FFFFFF;
+  border: 1px solid #E5DED2;
+}
+
+[data-theme="light"] .chairman__name {
+  color: #1E1E1E;
+}
+
+
+/* ==========================================================
+   SERVICE-CARD (sections.css duplicate) — Hardcoded #fff
+   ========================================================== */
+
+[data-theme="light"] .service-card__title {
+  color: #1E1E1E;
+}
+
+
+/* ==========================================================
+   AMENITY-CARD-SMALL — Hardcoded #fff
+   ========================================================== */
+
+[data-theme="light"] .amenity-card-small span {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .amenity-card-small:hover {
+  background: rgba(200, 155, 60, 0.04);
+}
+
+
+/* ==========================================================
+   TESTIMONIAL — Hardcoded #fff
+   ========================================================== */
+
+[data-theme="light"] .rating-score h2 {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .testimonial-card__author h4 {
+  color: #1E1E1E;
+}
+
+[data-theme="light"] .author-avatar {
+  background: rgba(200, 155, 60, 0.08);
+}
+
+
+/* ==========================================================
+   BADGE-LARGE — Light
+   ========================================================== */
+
+[data-theme="light"] .badge-large {
+  background: rgba(200, 155, 60, 0.08);
+  border: 1px solid rgba(200, 155, 60, 0.25);
+  color: #A87A1E;
+}
+
+
+/* ==========================================================
+   IMAGE PLACEHOLDER — Light
+   ========================================================== */
+
+[data-theme="light"] .image-placeholder {
+  background: linear-gradient(135deg, #F2EEE7, #EDE8DF);
+  border-color: #E5DED2;
+}
+
+
+/* ==========================================================
+   PROGRESS BAR — Light
+   ========================================================== */
+
+[data-theme="light"] .progress-bar-wrap {
+  background: rgba(200, 155, 60, 0.10);
+}
+
+[data-theme="light"] .progress-labels {
+  color: #5A5A5A;
+}
+
+
+/* ==========================================================
+   CONTACT ICON GLASS (footer) — Light
+   ========================================================== */
+
+[data-theme="light"] .contact-icon-gold {
+  color: #C89B3C;
+  filter: drop-shadow(0 0 8px rgba(200, 155, 60, 0.15));
+}
+
+
+/* ==========================================================
+   PROJECTS LUXURY THEME — Light Override
+   These use !important because the dark styles use !important
+   ========================================================== */
+
+[data-theme="light"] .projects-page {
+  background: #F8F6F2 !important;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(200, 155, 60, 0.04) 0%, transparent 45%),
+    linear-gradient(180deg, #F8F6F2 0%, #F2EEE7 35%, #EDE8DF 70%, #F2EEE7 100%) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="light"] .projects-page::before {
+  background-image: radial-gradient(rgba(200, 155, 60, 0.05) 1px, transparent 1px) !important;
+  display: block !important;
+  opacity: 0.3;
+}
+
+[data-theme="light"] .projects-page::after {
+  opacity: 0.01 !important;
+}
+
+/* Also target body.projects-luxury-theme specificity */
+[data-theme="light"] body.projects-luxury-theme .projects-page,
+body.projects-luxury-theme [data-theme="light"] .projects-page,
+[data-theme="light"].projects-luxury-theme .projects-page,
+html[data-theme="light"] body.projects-luxury-theme .projects-page {
+  background: #F8F6F2 !important;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(200, 155, 60, 0.04) 0%, transparent 45%),
+    linear-gradient(180deg, #F8F6F2 0%, #F2EEE7 35%, #EDE8DF 70%, #F2EEE7 100%) !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] body.projects-luxury-theme .projects-page::before {
+  display: block !important;
+  background-image: radial-gradient(rgba(200, 155, 60, 0.05) 1px, transparent 1px) !important;
+  opacity: 0.3;
+}
+
+html[data-theme="light"] body.projects-luxury-theme .projects-page::after {
+  opacity: 0.01 !important;
+}
+
+
+/* ==========================================================
+   FOOTER SOCIAL ICONS — Ensure SVG visibility in light
+   ========================================================== */
+
+[data-theme="light"] .footer-socials a svg,
+[data-theme="light"] .social-glass svg,
+[data-theme="light"] .social-icon-gold svg {
+  color: #A87A1E;
+  stroke: #A87A1E;
+}
+
+[data-theme="light"] .footer-socials a:hover svg,
+[data-theme="light"] .social-glass:hover svg,
+[data-theme="light"] .social-icon-gold:hover svg {
+  color: #FFFFFF;
+  stroke: #FFFFFF;
+}
+
+/* ==========================================================
+   PORTFOLIO CARDS (Dynamic Grid) — Light Overrides
+   ========================================================== */
+
+html[data-theme="light"] .portfolio-card,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card {
+  background: #FFFFFF !important;
+  border-color: #E5DED2 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+html[data-theme="light"] .portfolio-card:hover,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card:hover {
+  border-color: rgba(200, 155, 60, 0.35) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08),
+              0 0 16px rgba(200, 155, 60, 0.06) !important;
+}
+
+html[data-theme="light"] .portfolio-card__title,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__title {
+  color: #1E1E1E !important;
+}
+
+html[data-theme="light"] .portfolio-card__location,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__location {
+  color: #5A5A5A !important;
+}
+
+html[data-theme="light"] .portfolio-card__location svg,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__location svg {
+  stroke: #A87A1E !important;
+}
+
+html[data-theme="light"] .portfolio-card__spec-label,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__spec-label {
+  color: #6B6B6B !important;
+}
+
+html[data-theme="light"] .portfolio-card__spec-value,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__spec-value {
+  color: #1E1E1E !important;
+}
+
+html[data-theme="light"] .portfolio-card__spec-value--gold,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__spec-value--gold {
+  color: #C89B3C !important;
+}
+
+html[data-theme="light"] .portfolio-card__divider,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__divider {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+
+html[data-theme="light"] .portfolio-card__btn,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__btn {
+  border-color: rgba(200, 155, 60, 0.4) !important;
+  color: #A87A1E !important;
+}
+
+html[data-theme="light"] .portfolio-card:hover .portfolio-card__btn,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card:hover .portfolio-card__btn {
+  background: linear-gradient(135deg, #E7C564 0%, #C89B3C 100%) !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+}
+
+html[data-theme="light"] .portfolio-card__status,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__status {
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: #1E1E1E !important;
+  border-color: #E5DED2 !important;
+}
+
+html[data-theme="light"] .portfolio-card__status--ongoing,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__status--ongoing {
+  background: rgba(21, 114, 71, 0.12) !important;
+  color: #157247 !important;
+  border-color: rgba(21, 114, 71, 0.25) !important;
+}
+
+html[data-theme="light"] .portfolio-card__status--upcoming,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__status--upcoming {
+  background: rgba(200, 155, 60, 0.12) !important;
+  color: #A87A1E !important;
+  border-color: rgba(200, 155, 60, 0.25) !important;
+}
+
+html[data-theme="light"] .portfolio-card__status--completed,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__status--completed {
+  background: rgba(106, 27, 43, 0.12) !important;
+  color: #6A1B2B !important;
+  border-color: rgba(106, 27, 43, 0.25) !important;
+}

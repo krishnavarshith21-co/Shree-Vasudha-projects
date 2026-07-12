@@ -1,0 +1,218 @@
+/* ============================================================
+   SHREE VASUDHA PROJECTS — Theme Toggle Component
+   Premium animated sun/moon toggle in the navbar.
+   ============================================================ */
+
+/* ==========================================================
+   TOGGLE WRAPPER — Positioned in Navbar
+   ========================================================== */
+
+.theme-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  margin-right: 8px;
+  z-index: 10;
+}
+
+/* ==========================================================
+   TOGGLE BUTTON — Pill-shaped slider
+   ========================================================== */
+
+.theme-toggle__btn {
+  position: relative;
+  width: 56px;
+  height: 30px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(200, 155, 60, 0.15), rgba(200, 155, 60, 0.08));
+  border: 1px solid rgba(200, 155, 60, 0.25);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.theme-toggle__btn:hover {
+  border-color: rgba(200, 155, 60, 0.50);
+  box-shadow: 0 0 16px rgba(200, 155, 60, 0.15);
+}
+
+.theme-toggle__btn:focus-visible {
+  outline: 2px solid #C89B3C;
+  outline-offset: 3px;
+}
+
+/* ==========================================================
+   TOGGLE THUMB — The sliding circle
+   ========================================================== */
+
+.theme-toggle__thumb {
+  position: absolute;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E7C564, #C89B3C);
+  box-shadow: 0 2px 8px rgba(200, 155, 60, 0.30);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Light theme: thumb slides right */
+[data-theme="light"] .theme-toggle__thumb {
+  left: calc(100% - 27px);
+}
+
+/* ==========================================================
+   ICONS — Sun & Moon SVGs
+   ========================================================== */
+
+.theme-toggle__icon {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Moon icon — visible in dark theme (left side when thumb is left) */
+.theme-toggle__moon {
+  right: 10px;
+  color: rgba(255, 255, 255, 0.50);
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Sun icon — visible in light theme (right side when thumb is right) */
+.theme-toggle__sun {
+  left: 10px;
+  color: rgba(200, 155, 60, 0.50);
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* When light theme is active */
+[data-theme="light"] .theme-toggle__moon {
+  opacity: 0.3;
+}
+
+[data-theme="light"] .theme-toggle__sun {
+  color: #C89B3C;
+  opacity: 1;
+}
+
+/* When dark theme is active */
+[data-theme="dark"] .theme-toggle__sun {
+  opacity: 0.3;
+}
+
+[data-theme="dark"] .theme-toggle__moon {
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
+}
+
+/* Light theme button background */
+[data-theme="light"] .theme-toggle__btn {
+  background: linear-gradient(135deg, rgba(200, 155, 60, 0.12), rgba(200, 155, 60, 0.06));
+  border-color: rgba(200, 155, 60, 0.20);
+}
+
+[data-theme="light"] .theme-toggle__btn:hover {
+  border-color: rgba(200, 155, 60, 0.40);
+}
+
+/* ==========================================================
+   TOGGLE GLOW PULSE — Subtle animation
+   ========================================================== */
+
+.theme-toggle__btn::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center, rgba(200, 155, 60, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+.theme-toggle__btn:hover::after {
+  opacity: 1;
+}
+
+/* ==========================================================
+   MOBILE THEME TOGGLE — Inside mobile menu
+   ========================================================== */
+
+.theme-toggle--mobile {
+  display: none;
+  justify-content: center;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.theme-toggle--mobile .theme-toggle__btn {
+  width: 64px;
+  height: 34px;
+}
+
+.theme-toggle--mobile .theme-toggle__thumb {
+  width: 28px;
+  height: 28px;
+}
+
+[data-theme="light"] .theme-toggle--mobile .theme-toggle__thumb {
+  left: calc(100% - 31px);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    display: flex;
+    margin-left: auto;
+    margin-right: 12px;
+  }
+
+  .theme-toggle--mobile {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-toggle__btn {
+    width: 48px;
+    height: 26px;
+  }
+
+  .theme-toggle__thumb {
+    width: 20px;
+    height: 20px;
+  }
+
+  [data-theme="light"] .theme-toggle__thumb {
+    left: calc(100% - 23px);
+  }
+
+  .theme-toggle__icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .theme-toggle__moon {
+    right: 8px;
+  }
+
+  .theme-toggle__sun {
+    left: 8px;
+  }
+}
