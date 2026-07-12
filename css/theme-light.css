@@ -2569,6 +2569,11 @@ html[data-theme="light"] body.projects-luxury-theme .portfolio-card {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
 }
 
+html[data-theme="light"] .portfolio-card__content,
+html[data-theme="light"] body.projects-luxury-theme .portfolio-card__content {
+  margin-top: 0 !important;
+}
+
 html[data-theme="light"] .portfolio-card:hover,
 html[data-theme="light"] body.projects-luxury-theme .portfolio-card:hover {
   border-color: rgba(200, 155, 60, 0.35) !important;
