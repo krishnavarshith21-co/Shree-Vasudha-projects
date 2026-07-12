@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Default placeholder images just in case
     const defaultImages = [
-      'assets/project-1.jpg',
-      'assets/project-2.jpg',
-      'assets/project-3.jpg'
+      'assets/images/project-1.jpg',
+      'assets/images/project-2.jpg',
+      'assets/images/project-3.jpg'
     ];
     
     projects.forEach((project, index) => {
