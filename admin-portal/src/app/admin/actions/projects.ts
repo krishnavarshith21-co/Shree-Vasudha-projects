@@ -37,7 +37,7 @@ export async function deleteProject(id: string) {
       if (typeof url !== 'string') return null;
       const parts = url.split('/media/');
       return parts.length > 1 ? parts[1] : null;
-    }).filter(Boolean);
+    }).filter(Boolean) as string[];
 
     if (paths.length > 0) {
       const { error: storageError } = await supabase.storage
