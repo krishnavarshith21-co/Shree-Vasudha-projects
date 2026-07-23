@@ -202,10 +202,10 @@
       </div>
       
       <div class="pdl-editorial-grid">
-        <div class="pdl-editorial-content" id="project-description">
+        <div class="pdl-editorial-content pdl-reveal-up" id="project-description">
           <p>Loading overview...</p>
         </div>
-        <div class="pdl-editorial-image" id="project-overview-image">
+        <div class="pdl-editorial-image pdl-reveal-up" id="project-overview-image">
           <!-- Populated by JS -->
         </div>
       </div>
@@ -246,6 +246,15 @@
     </div>
   </section>
 
+  <!-- Lightbox Modal -->
+  <div id="pdl-lightbox" class="pdl-lightbox" role="dialog" aria-label="Image Gallery">
+    <button class="pdl-lightbox__close" aria-label="Close gallery" id="lightbox-close">✕</button>
+    <button class="pdl-lightbox__nav pdl-lightbox__prev" aria-label="Previous image" id="lightbox-prev">‹</button>
+    <button class="pdl-lightbox__nav pdl-lightbox__next" aria-label="Next image" id="lightbox-next">›</button>
+    <img class="pdl-lightbox__img" src="" alt="Gallery image" id="lightbox-img">
+    <div class="pdl-lightbox__counter" id="lightbox-counter"></div>
+  </div>
+
   <!-- ==========================================
        AMENITIES
        ========================================== -->
@@ -258,6 +267,38 @@
       </div>
       
       <div class="pdl-amenities-gallery" id="project-amenities-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FLOOR PLANS
+       ========================================== -->
+  <section id="project-floor-plans-section" class="pdl-section pdl-section--primary" style="display: none;">
+    <div class="pdl-container">
+      <div class="pdl-header">
+        <span class="pdl-overline">Layout</span>
+        <h2 class="pdl-heading">Floor Plans & Master Plan</h2>
+        <span class="pdl-heading-line"></span>
+      </div>
+      <div class="pdl-floor-plans-grid" id="project-floor-plans-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       VIDEO
+       ========================================== -->
+  <section id="project-video-section" class="pdl-section pdl-section--secondary" style="display: none;">
+    <div class="pdl-container">
+      <div class="pdl-header">
+        <span class="pdl-overline">Cinematic Tour</span>
+        <h2 class="pdl-heading">Experience the Lifestyle</h2>
+        <span class="pdl-heading-line"></span>
+      </div>
+      <div class="pdl-video-wrapper" id="project-video-container">
         <!-- Populated by JS -->
       </div>
     </div>
@@ -283,14 +324,14 @@
   <!-- ==========================================
        DOWNLOAD BROCHURE
        ========================================== -->
-  <section id="project-brochure-section" class="pdl-section pdl-section--secondary" style="display: none;">
+  <section id="project-brochure-section" class="pdl-section pdl-section--secondary">
     <div class="pdl-container">
-      <div class="pdl-brochure-container">
+      <div class="pdl-brochure-container" id="brochure-container">
         <!-- 3D style brochure -->
         <div class="pdl-brochure-book">
             <img src="assets/images/logo.png" alt="Brochure Cover" id="brochure-cover-img" style="width: 100%; height: 100%; object-fit: contain; background: #fff; border-radius: 4px 8px 8px 4px; box-shadow: -5px 0 20px rgba(0,0,0,0.5); padding: 40px;">
         </div>
-        <div style="margin-left: 60px; max-width: 500px;">
+        <div id="brochure-info" style="max-width: 500px;">
           <h2 class="pdl-heading" style="margin-bottom: 24px;">Download Brochure</h2>
           <p style="color: var(--color-text-secondary); margin-bottom: 32px; font-size: 1.1rem; line-height: 1.6;">Explore the detailed floor plans, master layout, premium specifications, and exclusive amenities in our comprehensive project brochure.</p>
           <a href="#" id="project-brochure-btn" target="_blank" class="pdl-btn pdl-btn--gold">
@@ -304,7 +345,7 @@
   <!-- ==========================================
        FLOATING ENQUIRY FORM & CONTACT SECTION
        ========================================== -->
-  <a href="#project-enquiry" class="pdl-floating-cta hide-mobile">
+  <a href="#project-enquiry" class="pdl-floating-cta">
     <i data-lucide="message-square"></i> Enquire Now
   </a>
 
@@ -317,34 +358,37 @@
       </div>
       
       <div class="card" style="padding: 40px; box-shadow: var(--shadow-premium); background: var(--color-bg-card); border: 1px solid var(--color-border); border-top: 3px solid var(--color-accent);">
-        <form id="project-inquiry-form">
+        <form id="project-inquiry-form" novalidate>
           <input type="hidden" id="inquiry-project" name="project_interest" value="">
           
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
-            <div>
-              <label style="display:block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-secondary);">Full Name</label>
-              <input type="text" id="inquiry-name" placeholder="Full Name" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary);">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <div class="pdl-form-field" id="field-name">
+              <label for="inquiry-name">Full Name</label>
+              <input type="text" id="inquiry-name" placeholder="Full Name" required minlength="2">
+              <span class="pdl-form-error">Please enter your full name</span>
             </div>
-            <div>
-              <label style="display:block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-secondary);">Phone Number</label>
-              <input type="tel" id="inquiry-phone" placeholder="+91 98765 43210" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary);">
+            <div class="pdl-form-field" id="field-phone">
+              <label for="inquiry-phone">Phone Number</label>
+              <input type="tel" id="inquiry-phone" placeholder="+91 98765 43210" required>
+              <span class="pdl-form-error">Please enter a valid phone number</span>
             </div>
           </div>
           
-          <div style="margin-bottom: 24px;">
-            <label style="display:block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-secondary);">Email Address</label>
-            <input type="email" id="inquiry-email" placeholder="Email Address" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary);">
+          <div class="pdl-form-field" id="field-email">
+            <label for="inquiry-email">Email Address</label>
+            <input type="email" id="inquiry-email" placeholder="Email Address" required>
+            <span class="pdl-form-error">Please enter a valid email address</span>
           </div>
           
-          <div style="margin-bottom: 32px;">
-            <label style="display:block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-secondary);">Message (Optional)</label>
-            <textarea id="inquiry-message" rows="4" placeholder="Message (Optional)" style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary); resize: vertical;"></textarea>
+          <div class="pdl-form-field" id="field-message">
+            <label for="inquiry-message">Message (Optional)</label>
+            <textarea id="inquiry-message" rows="4" placeholder="Message (Optional)" style="resize: vertical;"></textarea>
           </div>
           
           <div id="inquiry-feedback" style="display:none; margin-bottom: 24px; padding: 16px; border-radius: 8px; font-size: 14px; text-align: center;"></div>
           
           <button type="submit" id="inquiry-submit" class="pdl-btn pdl-btn--gold" style="width: 100%;">
-            Submit Enquiry <i data-lucide="arrow-right"></i>
+            <span id="inquiry-btn-text">Submit Enquiry</span> <i data-lucide="arrow-right"></i>
           </button>
         </form>
       </div>
@@ -444,6 +488,9 @@
     </div>
 </footer>
 
+  <!-- Toast Notification Container -->
+  <div class="pdl-toast-container" id="pdl-toast-container"></div>
+
   <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase.js"></script>
@@ -451,7 +498,8 @@
   <!-- Core JS -->
   <script src="js/app.js?v=2.0"></script>
   <script src="js/fetch-settings.js"></script>
-  <script src="js/fetch-project-detail.js"></script>
+  <script src="js/project-detail-interactions.js?v=2.0"></script>
+  <script src="js/fetch-project-detail.js?v=3.0"></script>
 
   <!-- Initialize Lucide Icons -->
   <script>
