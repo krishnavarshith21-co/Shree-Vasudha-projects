@@ -32,7 +32,6 @@
   <link rel="stylesheet" href="css/utilities.css?v=2.0">
   <link rel="stylesheet" href="css/sections.css?v=10.1">
   <link rel="stylesheet" href="css/tablet-responsive.css?v=1.0">
-  <link rel="stylesheet" href="css/project-detail-luxury.css">
 
               
   <!-- Favicons -->
@@ -141,135 +140,215 @@
     </div>
   </section>
 
-  <!-- HERO SECTION -->
-  <section id="project-main-hero" class="page-hero" style="min-height: 70vh;">
-    <div class="page-hero__bg animate-slow-zoom" id="project-hero-bg" style="background-image: url('assets/images/hero-bg.jpg');"></div>
-    <div class="page-hero__content">
-      <div class="mb-4" id="project-status-badge">
-        <span style="background: var(--color-primary); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Loading...</span>
+  <!-- ==========================================
+       HERO SECTION — Premium Full Screen
+       ========================================== -->
+  <section id="project-main-hero" class="pdl-hero">
+    <div class="pdl-hero__bg animate-slow-zoom" id="project-hero-bg"></div>
+    <div class="pdl-hero__overlay"></div>
+    
+    <div class="pdl-hero__content">
+      <div id="project-status-badge" class="pdl-hero__status">
+        Loading...
       </div>
-      <h1 class="page-hero__title animate-fade-in-up" id="project-title" style="font-size: clamp(3rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 16px;">Loading Project...</h1>
-      <p class="page-hero__subtitle animate-fade-in-up delay-200" id="project-location" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+      <h1 class="pdl-hero__title animate-fade-in-up" id="project-title">Loading Project...</h1>
+      <p class="pdl-hero__location animate-fade-in-up delay-200" id="project-location">
         <i data-lucide="map-pin"></i> <span>...</span>
       </p>
-    </div>
-  </section>
-
-  <!-- PROJECT DETAILS -->
-  <section id="project-main-content" class="section" style="background-color: var(--color-bg);">
-    <div class="container">
       
-      <!-- Quick Info Bar -->
-      <div class="project-quick-info" style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: 16px; padding: clamp(16px, 4vw, 32px); display: grid; gap: 24px; margin-top: -80px; position: relative; z-index: 10; margin-bottom: 64px;">
-        <div class="quick-info-item">
-          <p class="quick-info-label">Configuration</p>
-          <p class="quick-info-value" id="project-config">-</p>
-        </div>
-        <div class="quick-info-item">
-          <p class="quick-info-label">Project Area</p>
-          <p class="quick-info-value" id="project-area">-</p>
-        </div>
-        <div class="quick-info-item last">
-          <p class="quick-info-label">Starting Price</p>
-          <p class="quick-info-value highlight" id="project-price">-</p>
-        </div>
-      </div>
-
-      <div class="project-content-grid" id="project-content-grid">
-        
-        <!-- Main Content -->
-        <div>
-          <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Overview</h2>
-          <div id="project-description" style="color: var(--color-text-secondary); line-height: 1.8; font-size: 16px; margin-bottom: 48px;">
-            <p>Loading details...</p>
-          </div>
-
-          <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Project Highlights</h2>
-          <div id="project-highlights" style="color: var(--color-text-secondary); line-height: 1.8; font-size: 16px;">
-            <p>Loading highlights...</p>
-          </div>
-
-          <!-- Media Sections (Populated by JS if exists) -->
-          <div id="project-media-container" style="margin-top: 64px; display: none; flex-direction: column; gap: 64px;">
-            
-            <div id="project-video-section" style="display: none;">
-              <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Walkthrough Video</h2>
-              <div style="border-radius: 16px; overflow: hidden; border: 1px solid var(--color-border); aspect-ratio: 16 / 9;">
-                <video id="project-video" controls style="width: 100%; height: 100%; object-fit: cover; background: #000;"></video>
-              </div>
-            </div>
-
-            <div id="project-gallery-section" style="display: none;">
-              <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Gallery</h2>
-              <div id="project-gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
-                <!-- Gallery images go here -->
-              </div>
-            </div>
-
-            <div id="project-floorplans-section" style="display: none;">
-              <h2 class="section-title" style="font-size: 36px; margin-bottom: 24px;">Floor Plans</h2>
-              <div id="project-floorplans-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px;">
-                <!-- Floor plan images go here -->
-              </div>
-            </div>
-
-            <div id="project-brochure-section" style="display: none;">
-              <div style="background: linear-gradient(135deg, rgba(181, 155, 84, 0.1) 0%, rgba(0,0,0,0) 100%); border: 1px solid var(--color-primary-dark); border-radius: 16px; padding: 48px 32px; text-align: center;">
-                <h3 style="font-family: var(--font-heading); font-size: 28px; color: var(--color-primary); margin-bottom: 16px;">Download Project Brochure</h3>
-                <p style="color: var(--color-text-secondary); margin-bottom: 32px;">Get all the detailed specifications, master plan, and floor plans in one comprehensive document.</p>
-                <a href="#" id="project-brochure-btn" target="_blank" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 8px;">
-                  <i data-lucide="download"></i> Download PDF
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Sidebar / Inquiry Form -->
-        <div>
-          <div class="card" style="padding: 32px; position: sticky; top: 120px;">
-            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--color-text); margin-bottom: 24px;">Interested in this project?</h3>
-            
-            <form id="project-inquiry-form">
-              <input type="hidden" id="inquiry-project" name="project_interest" value="">
-              
-              <div style="margin-bottom: 16px;">
-                <input type="text" id="inquiry-name" placeholder="Full Name" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: #fff;">
-              </div>
-              <div style="margin-bottom: 16px;">
-                <input type="email" id="inquiry-email" placeholder="Email Address" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: #fff;">
-              </div>
-              <div style="margin-bottom: 16px;">
-                <input type="tel" id="inquiry-phone" placeholder="Phone Number" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: #fff;">
-              </div>
-              <div style="margin-bottom: 24px;">
-                <textarea id="inquiry-message" rows="3" placeholder="Message (Optional)" style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: #fff; resize: vertical;"></textarea>
-              </div>
-              
-              <div id="inquiry-feedback" style="display:none; margin-bottom: 16px; padding: 16px; border-radius: 8px; font-size: 14px;"></div>
-              
-              <button type="submit" id="inquiry-submit" class="btn btn--primary" style="width: 100%;">Enquire Now</button>
-            </form>
-          </div>
-        </div>
-
+      <div class="pdl-hero__actions animate-fade-in-up delay-400">
+        <a href="#project-brochure-section" class="pdl-btn pdl-btn--glass">
+          <i data-lucide="file-text"></i> Brochure
+        </a>
+        <a href="#project-enquiry" class="pdl-btn pdl-btn--gold">
+          Enquire Now <i data-lucide="arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-    <!-- ==========================================
-       PRE-FOOTER CTA
+  <!-- ==========================================
+       FLOATING HIGHLIGHTS (Overlaps Hero)
        ========================================== -->
-  <section class="luxury-cta">
-    <div class="luxury-cta__bg"></div>
-    <div class="luxury-cta__container">
-        <h2 class="luxury-cta__title">READY TO BUILD YOUR LEGACY?</h2>
-        <p class="luxury-cta__desc">Experience private consultations with our luxury property advisors.</p>
-        <a href="contact.html" class="luxury-cta__btn">Schedule Private Consultation</a>
+  <div class="pdl-highlights" id="project-quick-info">
+    <div class="pdl-highlight-card">
+      <p class="pdl-highlight-label">Configuration</p>
+      <p class="pdl-highlight-value" id="project-config">-</p>
     </div>
-</section>
+    <div class="pdl-highlight-card">
+      <p class="pdl-highlight-label">Project Area</p>
+      <p class="pdl-highlight-value" id="project-area">-</p>
+    </div>
+    <div class="pdl-highlight-card">
+      <p class="pdl-highlight-label">Starting Price</p>
+      <p class="pdl-highlight-value" id="project-price" style="color: var(--color-accent);">-</p>
+    </div>
+    <div class="pdl-highlight-card">
+      <p class="pdl-highlight-label">Status</p>
+      <p class="pdl-highlight-value" id="project-status-text">-</p>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       OVERVIEW & EDITORIAL
+       ========================================== -->
+  <section class="pdl-section pdl-section--primary pdl-curved-top">
+    <div class="pdl-container">
+      <div class="pdl-header">
+        <span class="pdl-overline">The Vision</span>
+        <h2 class="pdl-heading">Project Overview</h2>
+        <span class="pdl-heading-line"></span>
+      </div>
+      
+      <div class="pdl-editorial-grid">
+        <div class="pdl-editorial-content" id="project-description">
+          <p>Loading overview...</p>
+        </div>
+        <div class="pdl-editorial-image" id="project-overview-image">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PROJECT HIGHLIGHTS (Features)
+       ========================================== -->
+  <section class="pdl-section pdl-section--secondary">
+    <div class="pdl-container">
+      <div class="pdl-header">
+        <span class="pdl-overline">Exclusivity</span>
+        <h2 class="pdl-heading">Project Highlights</h2>
+        <span class="pdl-heading-line"></span>
+      </div>
+      
+      <div class="pdl-features-grid" id="project-highlights-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       GALLERY & MEDIA
+       ========================================== -->
+  <section id="project-gallery-section" class="pdl-section pdl-section--primary" style="display: none;">
+    <div class="pdl-container">
+      <div class="pdl-header">
+        <span class="pdl-overline">Visual Tour</span>
+        <h2 class="pdl-heading">Luxury Gallery</h2>
+        <span class="pdl-heading-line"></span>
+      </div>
+      
+      <div class="pdl-amenities-gallery" id="project-gallery-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       AMENITIES
+       ========================================== -->
+  <section id="project-amenities-section" class="pdl-section pdl-section--secondary" style="display: none;">
+    <div class="pdl-container">
+      <div class="pdl-header">
+        <span class="pdl-overline">Lifestyle</span>
+        <h2 class="pdl-heading">World-Class Amenities</h2>
+        <span class="pdl-heading-line"></span>
+      </div>
+      
+      <div class="pdl-amenities-gallery" id="project-amenities-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       LOCATION & CONNECTIVITY
+       ========================================== -->
+  <section id="project-location-section" class="pdl-section pdl-section--primary" style="display: none;">
+    <div class="pdl-container">
+      <div class="pdl-header">
+        <span class="pdl-overline">Location</span>
+        <h2 class="pdl-heading">Seamless Connectivity</h2>
+        <span class="pdl-heading-line"></span>
+      </div>
+      
+      <div class="pdl-connectivity-grid" id="project-connectivity-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       DOWNLOAD BROCHURE
+       ========================================== -->
+  <section id="project-brochure-section" class="pdl-section pdl-section--secondary" style="display: none;">
+    <div class="pdl-container">
+      <div class="pdl-brochure-container">
+        <!-- 3D style brochure -->
+        <div class="pdl-brochure-book">
+            <img src="assets/images/logo.png" alt="Brochure Cover" id="brochure-cover-img" style="width: 100%; height: 100%; object-fit: contain; background: #fff; border-radius: 4px 8px 8px 4px; box-shadow: -5px 0 20px rgba(0,0,0,0.5); padding: 40px;">
+        </div>
+        <div style="margin-left: 60px; max-width: 500px;">
+          <h2 class="pdl-heading" style="margin-bottom: 24px;">Download Brochure</h2>
+          <p style="color: var(--color-text-secondary); margin-bottom: 32px; font-size: 1.1rem; line-height: 1.6;">Explore the detailed floor plans, master layout, premium specifications, and exclusive amenities in our comprehensive project brochure.</p>
+          <a href="#" id="project-brochure-btn" target="_blank" class="pdl-btn pdl-btn--gold">
+            <i data-lucide="download"></i> Download PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FLOATING ENQUIRY FORM & CONTACT SECTION
+       ========================================== -->
+  <a href="#project-enquiry" class="pdl-floating-cta hide-mobile">
+    <i data-lucide="message-square"></i> Enquire Now
+  </a>
+
+  <div id="project-enquiry" class="pdl-section pdl-section--primary">
+    <div class="pdl-container" style="max-width: 800px;">
+      <div class="pdl-header">
+        <span class="pdl-overline">Get in Touch</span>
+        <h2 class="pdl-heading">Register Your Interest</h2>
+        <span class="pdl-heading-line"></span>
+      </div>
+      
+      <div class="card" style="padding: 40px; box-shadow: var(--shadow-premium); background: var(--color-bg-card); border: 1px solid var(--color-border); border-top: 3px solid var(--color-accent);">
+        <form id="project-inquiry-form">
+          <input type="hidden" id="inquiry-project" name="project_interest" value="">
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+            <div>
+              <label style="display:block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-secondary);">Full Name</label>
+              <input type="text" id="inquiry-name" placeholder="Full Name" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary);">
+            </div>
+            <div>
+              <label style="display:block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-secondary);">Phone Number</label>
+              <input type="tel" id="inquiry-phone" placeholder="+91 98765 43210" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary);">
+            </div>
+          </div>
+          
+          <div style="margin-bottom: 24px;">
+            <label style="display:block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-secondary);">Email Address</label>
+            <input type="email" id="inquiry-email" placeholder="Email Address" required style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary);">
+          </div>
+          
+          <div style="margin-bottom: 32px;">
+            <label style="display:block; margin-bottom: 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-secondary);">Message (Optional)</label>
+            <textarea id="inquiry-message" rows="4" placeholder="Message (Optional)" style="width: 100%; padding: 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-primary); resize: vertical;"></textarea>
+          </div>
+          
+          <div id="inquiry-feedback" style="display:none; margin-bottom: 24px; padding: 16px; border-radius: 8px; font-size: 14px; text-align: center;"></div>
+          
+          <button type="submit" id="inquiry-submit" class="pdl-btn pdl-btn--gold" style="width: 100%;">
+            Submit Enquiry <i data-lucide="arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 
 <footer>
     <div class="footer-container stagger-children">

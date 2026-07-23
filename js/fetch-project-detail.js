@@ -75,7 +75,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Status badge
     const badgeEl = document.getElementById('project-status-badge');
-    if (badgeEl) {
+    const statusTextEl = document.getElementById('project-status-text');
+    if (badgeEl || statusTextEl) {
       let icon = '';
       if (project.status === 'Completed') {
         icon = 'check-circle';
@@ -84,7 +85,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         icon = 'clock';
       }
-      badgeEl.innerHTML = `<i data-lucide="${icon}" style="width: 14px; height: 14px;"></i> <span>${project.status || 'Upcoming'}</span>`;
+      if (badgeEl) badgeEl.innerHTML = `<i data-lucide="${icon}" style="width: 14px; height: 14px;"></i> <span>${project.status || 'Upcoming'}</span>`;
+      if (statusTextEl) statusTextEl.textContent = project.status || 'Upcoming';
     }
 
         // Hero background logic
@@ -139,17 +141,22 @@ document.addEventListener('DOMContentLoaded', async () => {
       descEl.innerHTML = `<p>${project.description.replace(/\n/g, '<br>')}</p>`;
     }
 
-    const highlightsEl = document.getElementById('project-highlights');
-    if (highlightsEl && project.highlights) {
-      highlightsEl.innerHTML = `<p>${project.highlights.replace(/\n/g, '<br>')}</p>`;
+    const highlightsGrid = document.getElementById('project-highlights-grid');
+    if (highlightsGrid && project.highlights) {
+      // Split highlights by comma or newline to create premium cards
+      const features = project.highlights.split(/,|\n/).map(f => f.trim()).filter(f => f);
+      highlightsGrid.innerHTML = features.map(feature => `
+        <div class="pdl-feature-card pdl-reveal-up">
+          <i data-lucide="check-circle"></i>
+          <h4>${feature}</h4>
+        </div>
+      `).join('');
     }
 
     // Replace editorial placeholder images if gallery images exist
-    if (project.gallery_images && project.gallery_images.length >= 2) {
-      const editImg1 = document.getElementById('editorial-image-1');
-      const editImg2 = document.getElementById('editorial-image-2');
-      if (editImg1) editImg1.src = project.gallery_images[0];
-      if (editImg2) editImg2.src = project.gallery_images[1];
+    const overviewImg = document.getElementById('project-overview-image');
+    if (overviewImg && project.gallery_images && project.gallery_images.length > 0) {
+      overviewImg.innerHTML = `<img src="${project.gallery_images[0]}" alt="Project Overview" loading="lazy">`;
     }
 
             // ─── LOCATION & CONNECTIVITY ───
