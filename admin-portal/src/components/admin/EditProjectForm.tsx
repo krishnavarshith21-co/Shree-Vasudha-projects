@@ -179,10 +179,23 @@ export default function EditProjectForm({ project }: { project: any }) {
               </div>
               <div>
                 <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">
-                  RERA Number
+                  Approvals (e.g. HMDA, RERA)
                 </label>
                 <input
-                  placeholder="RERA registration number"
+                  name="approvals"
+                  defaultValue={project.approvals || ""}
+                  placeholder="HMDA / RERA Approved"
+                  className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">
+                  Investment Rating (e.g. 9.5/10)
+                </label>
+                <input
+                  name="investment_rating"
+                  defaultValue={project.investment_rating || ""}
+                  placeholder="9.5/10"
                   className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors"
                 />
               </div>
@@ -207,7 +220,43 @@ export default function EditProjectForm({ project }: { project: any }) {
                 placeholder="Detailed project description..."
                 className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors"
               />
+              <div>
+              <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">
+                Amenities (JSON Array)
+              </label>
+              <textarea
+                name="amenities_json"
+                rows={3}
+                defaultValue={project.amenities_json ? JSON.stringify(project.amenities_json) : "[]"}
+                placeholder='["Clubhouse", "Swimming Pool", "24/7 Security"]'
+                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors font-mono text-xs"
+              />
             </div>
+            <div>
+              <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">
+                Timeline Phases (JSON Array)
+              </label>
+              <textarea
+                name="timeline_json"
+                rows={3}
+                defaultValue={project.timeline_json ? JSON.stringify(project.timeline_json) : "[]"}
+                placeholder='[{"year": "2024", "title": "Launch", "status": "completed"}]'
+                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors font-mono text-xs"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">
+                Nearby Places (JSON Array)
+              </label>
+              <textarea
+                name="nearby_places_json"
+                rows={3}
+                defaultValue={project.nearby_places_json ? JSON.stringify(project.nearby_places_json) : "[]"}
+                placeholder='[{"name": "Airport", "distance": "15 min"}]'
+                className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors font-mono text-xs"
+              />
+            </div>
+          </div>
             <div>
               <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">
                 Highlights (comma separated)
@@ -264,6 +313,10 @@ export default function EditProjectForm({ project }: { project: any }) {
         </div>
 
         <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-6">
+          <ImageUpload name="master_plan_url" defaultValue={project.master_plan_url} label="Master Plan Image" />
+        </div>
+
+        <div className="bg-[#141414] border border-white/[0.06] rounded-2xl p-6">
           <MultiImageUpload name="floor_plans" defaultValues={project.floor_plans} label="Floor Plans (Multiple Images)" />
         </div>
 
@@ -290,6 +343,8 @@ export default function EditProjectForm({ project }: { project: any }) {
               SEO Title
             </label>
             <input
+              name="seo_title"
+              defaultValue={project.seo_title}
               placeholder="Project title for search engines"
               className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors"
             />
@@ -299,6 +354,8 @@ export default function EditProjectForm({ project }: { project: any }) {
               SEO Description
             </label>
             <textarea
+              name="seo_description"
+              defaultValue={project.seo_description}
               rows={3}
               placeholder="Meta description for search results"
               className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors"
@@ -312,6 +369,12 @@ export default function EditProjectForm({ project }: { project: any }) {
               placeholder="luxury apartments hyderabad, 2bhk vanasthalipuram..."
               className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors"
             />
+          </div>
+          <div>
+            <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">
+              Meta Image
+            </label>
+            <ImageUpload name="meta_image" defaultValue={project.meta_image} label="Social Share Image (1200x630)" />
           </div>
         </motion.div>
 

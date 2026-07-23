@@ -66,12 +66,31 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Calculate transition delay for staggered animation
       const delay = (index % 10) * 100;
       
-      const statusClass = 'portfolio-card__status--' + (project.status ? project.status.toLowerCase() : 'unknown');
+      let badgeIcon = '';
+      let badgeBg = '';
+      let badgeBorder = '';
+      let badgeColor = '#fff';
+      
+      if (project.status === 'Completed') {
+        badgeIcon = 'check-circle';
+        badgeBg = '#B91C1C';
+        badgeBorder = '#EF4444';
+      } else if (project.status === 'Ongoing') {
+        badgeIcon = 'activity';
+        badgeBg = '#047857';
+        badgeBorder = '#10B981';
+      } else {
+        badgeIcon = 'clock';
+        badgeBg = '#1D4ED8';
+        badgeBorder = '#60A5FA';
+      }
+
+      const statusHTML = `<div class="portfolio-card__status" style="background: ${badgeBg}; border: 1px solid ${badgeBorder}; color: ${badgeColor}; box-shadow: 0 0 12px ${badgeBorder}40; display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 9999px;"><i data-lucide="${badgeIcon}" style="width: 12px; height: 12px;"></i> <span>${project.status || 'Upcoming'}</span></div>`;
 
       const cardHTML = `
         <div class="portfolio-card reveal" style="transition-delay: ${delay}ms;">
           <div class="portfolio-card__image-wrapper">
-            <div class="portfolio-card__status ${statusClass}">${project.status}</div>
+            ${statusHTML}
             <img src="${imageUrl}" alt="${project.name}" class="portfolio-card__image">
             <div class="portfolio-card__overlay"></div>
           </div>

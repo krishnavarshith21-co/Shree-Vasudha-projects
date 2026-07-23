@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   Clock,
   Hammer,
+  Activity,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -28,10 +29,10 @@ type Project = {
   published: boolean;
 };
 
-const statusConfig: Record<string, { color: string; icon: React.ElementType }> = {
-  Ongoing: { color: "#4CAF50", icon: Hammer },
-  Completed: { color: "#b59b54", icon: CheckCircle2 },
-  Upcoming: { color: "#2196F3", icon: Clock },
+const statusConfig: Record<string, { bg: string; border: string; color: string; icon: React.ElementType }> = {
+  Completed: { bg: "#B91C1C", border: "#EF4444", color: "#fff", icon: CheckCircle2 },
+  Ongoing: { bg: "#047857", border: "#10B981", color: "#fff", icon: Activity },
+  Upcoming: { bg: "#1D4ED8", border: "#60A5FA", color: "#fff", icon: Clock },
 };
 
 export default function ProjectsTable({ projects }: { projects: Project[] }) {
@@ -108,7 +109,7 @@ export default function ProjectsTable({ projects }: { projects: Project[] }) {
               </tr>
             ) : (
               filtered.map((project, i) => {
-                const config = statusConfig[project.status] || { color: "#fff", icon: CheckCircle2 };
+                const config = statusConfig[project.status] || { bg: "#333", border: "#555", color: "#fff", icon: CheckCircle2 };
                 const StatusIcon = config.icon;
                 return (
                   <motion.tr
@@ -131,10 +132,14 @@ export default function ProjectsTable({ projects }: { projects: Project[] }) {
                     </td>
                     <td className="px-4 py-4">
                       <span
-                        className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg"
+                        className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full"
                         style={{
-                          backgroundColor: `${config.color}15`,
+                          backgroundColor: config.bg,
+                          borderColor: config.border,
+                          borderWidth: '1px',
+                          borderStyle: 'solid',
                           color: config.color,
+                          boxShadow: `0 0 12px ${config.border}40`,
                         }}
                       >
                         <StatusIcon size={12} />

@@ -37,7 +37,12 @@ export default function SettingsForm({ initialSettings }: { initialSettings: any
           <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Phone</label><input name="phone" defaultValue={initialSettings?.phone || "+91 77024 36052"} className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#b59b54]/50 transition-colors" /></div>
         </div>
         <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Office Address</label><textarea name="address" rows={3} defaultValue={initialSettings?.address || "Plot - 285, 5th Floor, H.No. 5-6-190, Vaidhehi Nagar, Saheb Nagar Kalan, BN Reddy Nagar, R.R. Dist., Telangana – 500070"} className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#b59b54]/50 transition-colors" /></div>
+        <div className="grid grid-cols-2 gap-5">
+          <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Business Hours</label><textarea name="business_hours" rows={3} defaultValue={initialSettings?.business_hours || "Mon - Sat: 9:00 AM - 6:00 PM\nSun: Closed"} className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#b59b54]/50 transition-colors" /></div>
+          <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Footer Text / Copyright</label><textarea name="footer_text" rows={3} defaultValue={initialSettings?.footer_text || "Building trust through quality and commitment."} className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#b59b54]/50 transition-colors" /></div>
+        </div>
         <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Google Maps Link</label><input name="maps_link" defaultValue={initialSettings?.maps_link || "https://maps.google.com?q=Shree+vasudha+projects"} className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#b59b54]/50 transition-colors" /></div>
+        <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Copyright Notice</label><input name="copyright" defaultValue={initialSettings?.copyright || "© 2026 Shree Vasudha Projects. All Rights Reserved."} className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#b59b54]/50 transition-colors" /></div>
       </motion.div>
 
       {/* Social Media */}
@@ -56,7 +61,22 @@ export default function SettingsForm({ initialSettings }: { initialSettings: any
         <h3 className="text-white text-sm font-semibold border-b border-white/[0.06] pb-3">Analytics & Branding</h3>
         <div className="grid grid-cols-2 gap-5">
           <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Google Analytics ID</label><input name="analytics_id" defaultValue={initialSettings?.analytics_id} placeholder="G-XXXXXXXXXX" className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors" /></div>
-          <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Brand Primary Color</label><input name="brand_color" defaultValue={initialSettings?.brand_color || "#b59b54"} type="color" className="w-full h-[46px] bg-white/[0.04] border border-white/[0.08] rounded-xl px-2 cursor-pointer" /></div>
+          <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Meta Pixel ID</label><input name="meta_pixel" defaultValue={initialSettings?.meta_pixel} placeholder="XXXXXXXXXXXXXXXX" className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-[#b59b54]/50 transition-colors" /></div>
+        </div>
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Default Theme</label>
+            <select name="default_theme" defaultValue={initialSettings?.default_theme || "dark"} className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#b59b54]/50 transition-colors appearance-none">
+              <option value="dark" className="bg-[#141414]">Dark Mode (Luxury)</option>
+              <option value="light" className="bg-[#141414]">Light Mode</option>
+            </select>
+          </div>
+        </div>
+        <div className="grid grid-cols-4 gap-5">
+          <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Primary Color</label><input name="brand_color" defaultValue={initialSettings?.brand_color || "#b59b54"} type="color" className="w-full h-[46px] bg-white/[0.04] border border-white/[0.08] rounded-xl px-2 cursor-pointer" /></div>
+          <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Secondary Color</label><input name="secondary_color" defaultValue={initialSettings?.secondary_color || "#111111"} type="color" className="w-full h-[46px] bg-white/[0.04] border border-white/[0.08] rounded-xl px-2 cursor-pointer" /></div>
+          <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Button Color</label><input name="button_color" defaultValue={initialSettings?.button_color || "#b59b54"} type="color" className="w-full h-[46px] bg-white/[0.04] border border-white/[0.08] rounded-xl px-2 cursor-pointer" /></div>
+          <div><label className="block text-xs text-white/40 mb-2 uppercase tracking-wider">Accent Color</label><input name="accent_color" defaultValue={initialSettings?.accent_color || "#d4af37"} type="color" className="w-full h-[46px] bg-white/[0.04] border border-white/[0.08] rounded-xl px-2 cursor-pointer" /></div>
         </div>
         <div className="grid grid-cols-2 gap-5">
           <div><ImageUpload name="logo_url" defaultValue={initialSettings?.logo_url} label="Company Logo" /></div>

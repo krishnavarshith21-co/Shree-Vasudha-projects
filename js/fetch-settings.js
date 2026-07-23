@@ -15,9 +15,25 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (v.phone) {
         document.querySelectorAll('a[href^="tel:"]').forEach(el => {
           el.href = `tel:${v.phone.replace(/\s+/g, '')}`;
-          el.textContent = v.phone;
+          if (el.textContent.trim().match(/^[0-9+\-\s]+$/)) {
+            el.textContent = v.phone;
+          }
         });
       }
+
+      // Update WhatsApp globally
+      const waNumber = v.whatsapp ? v.whatsapp.replace(/[^0-9]/g, '') : '917702436052';
+      const waBaseUrl = `https://wa.me/${waNumber}`;
+      const waEnquiryUrl = `${waBaseUrl}?text=Hello%20I%20am%20interested%20in%20this%20project.`;
+      
+      document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(el => {
+        // Check if it's an enquiry button (like the sticky bar or specific CTA)
+        if (el.classList.contains('pdl-sticky-btn--wa') || el.classList.contains('enquiry-wa-btn')) {
+          el.href = waEnquiryUrl;
+        } else {
+          el.href = waBaseUrl;
+        }
+      });
 
       // Update Emails globally
       if (v.email) {
@@ -28,6 +44,31 @@ document.addEventListener('DOMContentLoaded', async () => {
             el.textContent = v.email;
           }
         });
+      }
+
+      // Update Social Media Links
+      const updateSocialLink = (network, url) => {
+        if (url) {
+          document.querySelectorAll(`a[href*="${network}.com"]`).forEach(el => {
+            el.href = url;
+          });
+        }
+      };
+      
+      updateSocialLink('facebook', v.facebook);
+      updateSocialLink('instagram', v.instagram);
+      updateSocialLink('youtube', v.youtube);
+      updateSocialLink('linkedin', v.linkedin);
+
+      // Update Branding
+      if (v.brand_color) {
+        document.documentElement.style.setProperty('--color-accent', v.brand_color);
+        document.documentElement.style.setProperty('--color-primary', v.brand_color);
+      }
+      
+      if (v.company_name) {
+        document.title = document.title.replace('Shree Vasudha Projects', v.company_name);
+        document.querySelectorAll('.company-name').forEach(el => el.textContent = v.company_name);
       }
 
       // Update Addresses

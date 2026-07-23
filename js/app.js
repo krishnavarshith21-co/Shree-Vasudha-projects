@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (theme === 'light') {
         return `rgba(168, 122, 30, ${Math.random() * 0.3 + 0.1})`;
       }
-      return `rgba(212, 175, 55, ${Math.random() * 0.5 + 0.2})`;
+      return `rgba(212, 175, 55, ${Math.random() * 0.1 + 0.2})`;
     }
 
     class HeroParticle {
